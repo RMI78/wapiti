@@ -63,6 +63,19 @@ services:
     volumes:
       - ./test_mod_exec/php/src:/var/www/html/
 
+  # Apache container for the htaccess module
+  htaccess:
+    build:
+      context: ./test_mod_htaccess/
+      dockerfile: Dockerfile
+      args:
+        PHP_HASH_TAG: ${PHP_HASH}
+    <<: *healthcheck_web
+    volumes:
+      - ./test_mod_htaccess/php/src:/var/www/html/
+    networks:
+      - test-network
+
   # Apache container for the http_headers module
   http_headers:
     build:
@@ -144,6 +157,8 @@ services:
       brute_login_form:
         condition: service_healthy
       exec:
+        condition: service_healthy
+      htaccess:
         condition: service_healthy
       http_headers:
         condition: service_healthy
