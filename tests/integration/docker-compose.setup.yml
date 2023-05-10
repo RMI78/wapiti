@@ -144,6 +144,12 @@ services:
     networks:
       - test-network
 
+  # Apache container for the xss module
+  xss:
+    <<: [ *default_php_setup, *healthcheck_web ]
+    volumes:
+      - ./test_mod_xss/php/src:/var/www/html/
+
   # Wapiti container 
   # requires all the targets containers to work perfectly
   wapiti:
@@ -179,6 +185,8 @@ services:
       csrf:
         condition: service_healthy
       wordpress:
+        condition: service_healthy
+      xss:
         condition: service_healthy
 
 volumes:

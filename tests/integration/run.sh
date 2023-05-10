@@ -11,7 +11,8 @@ test_mod_cookieflags \
 test_mod_brute_login_form \
 test_mod_exec \
 test_mod_htaccess \
-test_mod_crlf "
+test_mod_crlf \
+test_mod_xss "
 
 # Normalize trailing space for shell substitution
 if [[ ! -z "$TESTS" ]]; then
