@@ -8,7 +8,8 @@ test_mod_file \
 test_mod_csrf \
 test_mod_csp \
 test_mod_cookieflags \
-test_mod_brute_login_form "
+test_mod_brute_login_form \
+test_mod_exec "
 
 # Normalize trailing space for shell substitution
 if [[ ! -z "$TESTS" ]]; then
