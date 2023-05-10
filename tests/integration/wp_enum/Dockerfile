@@ -1,54 +1,19 @@
-FROM wordpress:latest
+FROM wordpress:6.2.0
+
+# Needed dependencies in the setup script
+ENV DEPENDENCIES "curl unzip"
 
 # Install zip utility
 RUN apt-get update -y \
-    && apt-get upgrade -y \
-    && apt-get dist-upgrade -y \
-    && apt-get -y autoremove \
-    && apt-get clean 
+    && apt-get install ${DEPENDENCIES} -y \
+    && apt-get clean -yq \
+    && apt-get -y autoremove -yq \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && truncate -s 0 /var/log/*log
 
-RUN apt-get install zip unzip -y  
-
-# Install Contact Form 7 plugin
-RUN curl -o /tmp/contact-form-7.zip -SL https://downloads.wordpress.org/plugin/contact-form-7.latest-stable.zip \
-    && unzip -q /tmp/contact-form-7.zip -d /usr/src/wordpress/wp-content/plugins \
-    && rm /tmp/contact-form-7.zip
-
-# Install Yoast SEO plugin
-RUN curl -o /tmp/yoast-seo.zip -SL https://downloads.wordpress.org/plugin/wordpress-seo.latest-stable.zip \
-    && unzip -q /tmp/yoast-seo.zip -d /usr/src/wordpress/wp-content/plugins \
-    && rm /tmp/yoast-seo.zip
-
-# Install Jetpack plugin
-RUN curl -o /tmp/jetpack.zip -SL https://downloads.wordpress.org/plugin/jetpack.latest-stable.zip \
-    && unzip -q /tmp/jetpack.zip -d /usr/src/wordpress/wp-content/plugins \
-    && rm /tmp/jetpack.zip
-
-# Install WooCommerce plugin
-RUN curl -o /tmp/woocommerce.zip -SL https://downloads.wordpress.org/plugin/woocommerce.latest-stable.zip \
-    && unzip -q /tmp/woocommerce.zip -d /usr/src/wordpress/wp-content/plugins \
-    && rm /tmp/woocommerce.zip
-
-# Install WPForms plugin
-RUN curl -o /tmp/wpforms.zip -SL https://downloads.wordpress.org/plugin/wpforms-lite.latest-stable.zip \
-    && unzip -q /tmp/wpforms.zip -d /usr/src/wordpress/wp-content/plugins \
-    && rm /tmp/wpforms.zip
-
-# Install W3 Total Cache plugin
-RUN curl -o /tmp/w3-total-cache.zip -SL https://downloads.wordpress.org/plugin/w3-total-cache.latest-stable.zip \
-    && unzip -q /tmp/w3-total-cache.zip -d /usr/src/wordpress/wp-content/plugins\
-    && rm /tmp/w3-total-cache.zip
-
-# Install Akismet Anti-Spam plugin
-RUN curl -o /tmp/akismet.zip -SL https://downloads.wordpress.org/plugin/akismet.latest-stable.zip \
-    && unzip -oq /tmp/akismet.zip -d /usr/src/wordpress/wp-content/plugins \
-    && rm /tmp/akismet.zip
-
-# Set permissions
-# RUN chown -R www-data:www-data /usr/src/wordpress/wp-content/plugins
- 
-# Set the entrypoint script to the default WordPress entrypoint
-# ENTRYPOINT ["docker-entrypoint.sh"]
+# Copy the setup script for themes and extensions
+COPY ./wp-setup.sh /usr/local/bin/wp-setup.sh
+RUN chmod +x /usr/local/bin/wp-setup.sh && /bin/bash wp-setup.sh
 
 # Start Apache
 CMD ["apache2-foreground"]
