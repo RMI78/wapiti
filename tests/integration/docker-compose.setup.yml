@@ -57,6 +57,12 @@ services:
     volumes:
       - ./test_mod_brute_login_form/php/src:/var/www/html/
 
+  # Apache container for the exec module
+  exec:
+    <<: [ *default_php_setup, *healthcheck_web ]
+    volumes:
+      - ./test_mod_exec/php/src:/var/www/html/
+
   # Apache container for the http_headers module
   http_headers:
     build:
@@ -136,6 +142,8 @@ services:
       backup:
         condition: service_healthy
       brute_login_form:
+        condition: service_healthy
+      exec:
         condition: service_healthy
       http_headers:
         condition: service_healthy
