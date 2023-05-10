@@ -51,6 +51,19 @@ services:
     volumes:
       - ./test_mod_backup/html/:/var/www/html/
 
+  # Apache container for the http_headers module
+  http_headers:
+    build:
+      context: ./test_mod_http_headers/
+      dockerfile: "Dockerfile"
+      args:
+        PHP_HASH_TAG: ${PHP_HASH}
+    <<: *healthcheck_web
+    volumes:
+      - ./test_mod_http_headers/php/src:/var/www/html/
+    networks:
+      - test-network
+
   # Wordpress container 
   wordpress:
     build:
@@ -91,6 +104,8 @@ services:
     command: "${TESTS}"
     depends_on:
       backup:
+        condition: service_healthy
+      http_headers:
         condition: service_healthy
       wordpress:
         condition: service_healthy
