@@ -150,6 +150,17 @@ services:
     volumes:
       - ./test_mod_xss/php/src:/var/www/html/
 
+  # Custom endpoint for requests
+  endpoint:
+    build:
+      context: ../../
+      dockerfile: "tests/integration/endpoint/Dockerfile"
+      args:
+        PHP_HASH_TAG: ${PHP_HASH}
+    <<: *healthcheck_web
+    networks:
+      - test-network
+
   # Wapiti container 
   # requires all the targets containers to work perfectly
   wapiti:
