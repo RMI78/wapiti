@@ -46,6 +46,16 @@ services:
       timeout: ${DEFAULT_HEALTHCHECKS_TIMEOUT}
       start_period: ${DEFAULT_HEALTHCHECKS_START_PERIOD}
       retries: ${DEFAULT_HEALTHCHECKS_RETRIES}
+  # Custom endpoint for requests
+  endpoint:
+    build:
+      context: ../../
+      dockerfile: "tests/integration/endpoint/Dockerfile"
+      args:
+        PHP_HASH_TAG: ${PHP_HASH}
+    <<: *healthcheck_web
+    networks:
+      - test-network
 
   # Wapiti container 
   # requires all the targets containers to work perfectly
