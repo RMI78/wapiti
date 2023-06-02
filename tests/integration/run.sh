@@ -13,7 +13,8 @@ test_mod_exec \
 test_mod_htaccess \
 test_mod_crlf \
 test_mod_xss \
-test_mod_xxe "
+test_mod_xxe \
+test_mod_sql "
 
 # Normalize trailing space for shell substitution
 if [[ ! -z "$TESTS" ]]; then
