@@ -73,6 +73,7 @@ services:
   htaccess:
     build:
       context: ./test_mod_htaccess/
+
       dockerfile: Dockerfile
       args:
         PHP_HASH_TAG: ${PHP_HASH}
@@ -118,6 +119,18 @@ services:
     <<: [ *default_php_setup, *healthcheck_web ]
     volumes:
       - ./test_mod_csrf/php/src:/var/www/html/
+  # Apache container for the sql module
+  sql:
+    build:
+      context: ./test_mod_sql/
+      dockerfile: Dockerfile
+      args:
+        PHP_HASH_TAG: ${PHP_HASH}
+    <<: *healthcheck_web
+    volumes:
+      - ./test_mod_sql/php/src/:/var/www/html/
+    networks:
+      - test-network
 
   # Wordpress container 
   wordpress:
@@ -209,6 +222,8 @@ services:
       xss:
         condition: service_healthy
       xxe:
+        condition: service_healthy
+      sql:
         condition: service_healthy
 
 volumes:
