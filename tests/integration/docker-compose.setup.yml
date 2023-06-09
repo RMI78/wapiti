@@ -119,6 +119,25 @@ services:
     <<: [ *default_php_setup, *healthcheck_web ]
     volumes:
       - ./test_mod_csrf/php/src:/var/www/html/
+  # Apache and Nginx container for the methods module
+  # Apache hardly handle the CONNECT method so we need Nginx
+  # as a proxy to filter methods and avoid complex Apache conf
+  methods:
+    image: nginx${NGINX_HASH}
+    volumes:
+      - ./test_mod_methods/nginx.template:/etc/nginx/templates/default.conf.template
+    networks:
+      - test-network
+    <<: *healthcheck_web
+    depends_on:
+      apache-methods:
+        condition: service_healthy
+
+  apache-methods:
+    <<: [ *default_php_setup, *healthcheck_web ]
+    volumes:
+      - ./test_mod_methods/php/src:/var/www/html/
+
   # Apache container for the shellshock module
   shellshock:
     build:
@@ -237,6 +256,8 @@ services:
       sql:
         condition: service_healthy
       shellshock:
+        condition: service_healthy
+      methods:
         condition: service_healthy
 
 volumes:
