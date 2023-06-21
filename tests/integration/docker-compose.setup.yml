@@ -119,6 +119,17 @@ services:
     <<: [ *default_php_setup, *healthcheck_web ]
     volumes:
       - ./test_mod_csrf/php/src:/var/www/html/
+  # Apache container for the shellshock module
+  shellshock:
+    build:
+      context: ./test_mod_shellshock
+      dockerfile: Dockerfile
+      args:
+        HTTPD_HASH_TAG: ${HTTPD_HASH}
+    networks:
+      - test-network
+    <<: *healthcheck_web
+
   # Apache container for the sql module
   sql:
     build:
@@ -224,6 +235,8 @@ services:
       xxe:
         condition: service_healthy
       sql:
+        condition: service_healthy
+      shellshock:
         condition: service_healthy
 
 volumes:
