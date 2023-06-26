@@ -7,7 +7,7 @@ set -o errexit
 set -o nounset
 
 # Cleaning docker
-docker container prune -f || echo "no containers to prune"
+docker kill $(docker ps -q) || echo "no containers to kill"
 docker volume prune -f || echo "no volumes to prune"
 docker rmi $(docker images -a -q) || echo "no images to remove"
 (docker system prune -f && docker network create test-network) || echo "no need to prune the system"
