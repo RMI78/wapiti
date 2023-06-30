@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # List of modules to be tested
-TESTS="test_mod_wapp "
+TESTS="test_mod_wapp \
+test_mod_ssrf "
 
 # Normalize spaces for shell substitution
 if [[ ! -z "$TESTS" ]]; then

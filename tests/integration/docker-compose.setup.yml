@@ -46,6 +46,15 @@ services:
       timeout: ${DEFAULT_HEALTHCHECKS_TIMEOUT}
       start_period: ${DEFAULT_HEALTHCHECKS_START_PERIOD}
       retries: ${DEFAULT_HEALTHCHECKS_RETRIES}
+  # Apache container for the ssrf module
+  ssrf:
+    <<: [ *default_php_setup, *healthcheck_web ]
+    volumes:
+      - ./test_mod_ssrf/php/src:/var/www/html/
+    depends_on:
+      endpoint:
+        condition: service_healthy
+
   # Custom endpoint for requests
   endpoint:
     build:
@@ -72,6 +81,8 @@ services:
     command: "${TESTS}"
     depends_on:
       wapp:
+        condition: service_healthy
+      ssrf:
         condition: service_healthy
 
 networks:
