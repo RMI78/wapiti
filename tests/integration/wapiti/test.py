@@ -41,6 +41,8 @@ total_targets = sum([len(test["targets"]) for _, test in integration_data.items(
 # If any target recieve too many requests, it might not have
 # started well, this is another way to fill the set to break
 # the loop
+# The set will be made of uids "the_test_name" + "the_target"
+# strings since tests share some targets
 requests_counter = defaultdict(int)
 MAX_REQ = 100
 
@@ -51,16 +53,23 @@ for key_test, content_test in iter_tests:
     if len(targets_done) == total_targets:
         break
     for target in content_test["targets"]:
-        if target not in targets_done:
-            sys.stdout.write(f"Querying target {target}...\n")
-            requests_counter[target] += 1
+        uid_test = key_test+target['name']
+        if uid_test not in targets_done:
+            sys.stdout.write(f"Querying target {target['name']}...\n")
+            requests_counter[target['name']] += 1
             try:
-                requests.get(f"{target}", verify=False)
+                requests.get(f"{target['name']}", verify=False)
+                json_output_path = f"/home/{key_test}/{re.sub('/','_',re.sub(r'^https?://', '', target['name']))}.out"
+
+                # We define supplementary arguments globally and for each target:
+                more_args = target.get('supplementary_argument', '') + \
+                    ('' if target.get("erase_global_supplementary", False)
+                     else content_test.get('supplementary_argument', ''))
+
                 # We then call wapiti on each target of each module, generating a detailed JSON report
-                json_output_path = f"/home/{key_test}/{re.sub('/','_',re.sub(r'^https?://', '', target))}.out"
-                os.system(f"wapiti -u {target} -m {content_test['modules']} "
+                os.system(f"wapiti -u {target['name']} -m {content_test['modules']} "
                           f"-f json -o {json_output_path} "
-                          f"{content_test.get('supplementary_argument', '')} "
+                          f"{more_args} "
                           f"--detailed-report --flush-session --verbose 2 ")
                 # Now we reparse the JSON to get only useful tests informations:
                 with open(json_output_path, "r") as bloated_output_file:
@@ -87,13 +96,13 @@ for key_test, content_test in iter_tests:
 
                     # Rewriting the file
                     json.dump(filtered_data, output_file, indent=4)
-                targets_done.add(target)
+                targets_done.add(uid_test)
             except requests.exceptions.ConnectionError:
                 sys.stdout.write(f"Target {target} is not ready yet...\n")
                 # 0.5 seconds penalty in case of no response to avoid requests spamming and being
                 # too fast at blacklisting targets
                 sleep(0.5)
-            if requests_counter[target] > MAX_REQ:
+            if requests_counter[target['name']] > MAX_REQ:
                 sys.stdout.write(
-                    f"Target {target} from test {key_test} takes too long to respond\nSkipping...\n")
-                targets_done.add(target)
+                    f"Target {target['name']} from test {key_test} takes too long to respond\nSkipping...\n")
+                targets_done.add(uid_test)
