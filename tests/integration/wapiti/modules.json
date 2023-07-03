@@ -4,7 +4,11 @@
         "supplementary_argument": "",
         "report_filter_tree": {},
         "targets": [
-            "http://backup"
+            {
+                "name": "http://backup",
+                "supplementary_argument": "",
+                "erase_global_supplementary": false
+            }
         ]
     },
     "test_mod_wp_enum": {
@@ -12,7 +16,11 @@
         "supplementary_argument": "",
         "report_filter_tree": {},
         "targets": [
-            "http://wordpress"
+            {
+                "name": "http://wordpress",
+                "supplementary_argument": "",
+                "erase_global_supplementary": false
+            }
         ]
     },
     "test_mod_brute_login_form": {
@@ -51,7 +59,9 @@
             }
         },
         "targets": [
-            "http://brute_login_form"
+            {
+                "name": "http://brute_login_form"
+            }
         ]
     },
     "test_mod_buster": {
@@ -59,7 +69,9 @@
         "supplementary_argument": "",
         "report_filter_tree": {},
         "targets": [
-            "http://buster"
+            {
+                "name": "http://buster"
+            }
         ]
     },
     "test_mod_cookieflags": {
@@ -109,7 +121,9 @@
             }
         },
         "targets": [
-            "http://cookieflags"
+            {
+                "name": "http://cookieflags"
+            }
         ]
     },
     "test_mod_crlf": {
@@ -148,7 +162,9 @@
             }
         },
         "targets": [
-            "http://crlf"
+            {
+                "name": "http://crlf"
+            }
         ]
     },
     "test_mod_csp": {
@@ -187,9 +203,15 @@
             }
         },
         "targets": [
-            "http://csp/csp_insecured.php",
-            "http://csp/index.php",
-            "http://csp/csp_secured.php"
+            {
+                "name": "http://csp/csp_insecured.php"
+            },
+            {
+                "name": "http://csp/index.php"
+            },
+            {
+                "name": "http://csp/csp_secured.php}"
+            }
         ]
     },
     "test_mod_csrf": {
@@ -228,7 +250,9 @@
             }
         },
         "targets": [
-            "http://csrf"
+            {
+                "name": "http://csrf"
+            }
         ]
     },
     "test_mod_exec": {
@@ -267,7 +291,9 @@
             }
         },
         "targets": [
-            "http://exec"
+            {
+                "name": "http://exec"
+            }
         ]
     },
     "test_mod_file": {
@@ -306,7 +332,9 @@
             }
         },
         "targets": [
-            "http://file"
+            {
+                "name": "http://file"
+            }
         ]
     },
     "test_mod_htaccess": {
@@ -345,7 +373,9 @@
             }
         },
         "targets": [
-            "http://htaccess"
+            {
+                "name": "http://htaccess"
+            }
         ]
     },
     "test_mod_htp": {
@@ -353,7 +383,9 @@
         "supplementary_argument": "",
         "report_filter_tree": {},
         "targets": [
-            "http://htp"
+            {
+                "name": "http://htp"
+            }
         ]
     },
     "test_mod_drupal_enum": {
@@ -361,8 +393,12 @@
         "supplementary_argument": "",
         "report_filter_tree": {},
         "targets": [
-            "http://drupal9",
-            "http://drupal10"
+            {
+                "name": "http://drupal9"
+            },
+            {
+                "name": "http://drupal10"
+            }
         ]
     },
     "test_mod_http_headers": {
@@ -401,9 +437,15 @@
             }
         },
         "targets": [
-            "https://http_headers/valid_sec_http_header.php",
-            "https://http_headers/invalid_sec_http_header.php",
-            "https://http_headers/no_sec_http_header.php"
+            {
+                "name": "https://http_headers/valid_sec_http_header.php"
+            },
+            {
+                "name": "https://http_headers/invalid_sec_http_header.php"
+            },
+            {
+                "name": "https://http_headers/no_sec_http_header.php"
+            }
         ]
     },
     "test_mod_log4shell": {
@@ -411,7 +453,9 @@
         "supplementary_argument": "",
         "report_filter_tree": {},
         "targets": [
-            "http://log4shell"
+            {
+                "name": "http://log4shell"
+            }
         ]
     },
     "test_mod_methods": {
@@ -419,7 +463,9 @@
         "supplementary_argument": "",
         "report_filter_tree": {},
         "targets": [
-            "http://methods"
+            {
+                "name": "http://methods"
+            }
         ]
     },
     "test_mod_nikto": {
@@ -427,7 +473,9 @@
         "supplementary_argument": "",
         "report_filter_tree": {},
         "targets": [
-            "http://nikto"
+            {
+                "name": "http://nikto"
+            }
         ]
     },
     "test_mod_permanentxss": {
@@ -435,7 +483,9 @@
         "supplementary_argument": "",
         "report_filter_tree": {},
         "targets": [
-            "http://permanentxss"
+            {
+                "name": "http://permanentxss"
+            }
         ]
     },
     "test_mod_xxe": {
@@ -474,7 +524,9 @@
             }
         },
         "targets": [
-            "http://xxe"
+            {
+                "name": "http://xxe"
+            }
         ]
     },
     "test_mod_shellshock": {
@@ -482,7 +534,9 @@
         "supplementary_argument": "",
         "report_filter_tree": {},
         "targets": [
-            "http://shellshock"
+            {
+                "name": "http://shellshock"
+            }
         ]
     },
     "test_mod_sql": {
@@ -521,7 +575,9 @@
             }
         },
         "targets": [
-            "http://sql"
+            {
+                "name": "http://sql"
+            }
         ]
     },
     "test_mod_ssl": {
@@ -529,7 +585,9 @@
         "supplementary_argument": "",
         "report_filter_tree": {},
         "targets": [
-            "http://ssl"
+            {
+                "name": "http://ssl"
+            }
         ]
     },
     "test_mod_ssrf": {
@@ -537,7 +595,9 @@
         "supplementary_argument": "",
         "report_filter_tree": {},
         "targets": [
-            "http://ssrf"
+            {
+                "name": "http://ssrf"
+            }
         ]
     },
     "test_mod_takeover": {
@@ -545,7 +605,9 @@
         "supplementary_argument": "",
         "report_filter_tree": {},
         "targets": [
-            "http://takeover"
+            {
+                "name": "http://takeover"
+            }
         ]
     },
     "test_mod_timesql": {
@@ -553,7 +615,9 @@
         "supplementary_argument": "",
         "report_filter_tree": {},
         "targets": [
-            "http://timesql"
+            {
+                "name": "http://timesql"
+            }
         ]
     },
     "test_mod_wapp": {
@@ -561,7 +625,9 @@
         "supplementary_argument": "",
         "report_filter_tree": {},
         "targets": [
-            "http://wapp"
+            {
+                "name": "http://wapp"
+            }
         ]
     },
     "test_mod_xss": {
@@ -600,7 +666,9 @@
             }
         },
         "targets": [
-            "http://xss"
+            {
+                "name": "http://xss"
+            }
         ]
     }
 }
