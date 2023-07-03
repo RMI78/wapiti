@@ -68,9 +68,8 @@ for key_test, content_test in iter_tests:
                 more_args = target.get('supplementary_argument', '') + \
                     ('' if target.get("erase_global_supplementary", False)
                      else content_test.get('supplementary_argument', ''))
-
                 # We then call wapiti on each target of each module, generating a detailed JSON report
-                os.system(f"wapiti -u {target['name']} -m {content_test['modules']} "
+                os.system(f"wapiti -u {target['name']} -m \"{content_test['modules']}\" "
                           f"-f json -o {json_output_path} "
                           f"{more_args} "
                           f"--detailed-report --flush-session --verbose 2 ")
