@@ -6,6 +6,7 @@ import re
 from itertools import cycle
 from collections import defaultdict
 from itertools import chain
+from uuid import uuid4
 from time import sleep
 
 from misc_functions import purge_irrelevant_data, filter_data, all_keys_dicts
@@ -16,12 +17,16 @@ with open('/usr/local/bin/modules.json', 'r') as integration_file:
     integration_data = json.load(integration_file)
     assert set(chain.from_iterable([test["modules"].split(",")
                for _, test in integration_data.items()])).issubset(EXISTING_MODULES)
+# Adding on-the-fly uuid for each target for each test
+for _, integ_test in integration_data.items():
+    for target in integ_test['targets']:
+        target.update({"uid": str(uuid4())})
 
 # Eventually filter arguments if any
 if len(sys.argv) > 1:
     # first checking unknown tests/typo errors
     assert set(sys.argv[1:]).issubset(set(key for key, _ in integration_data.items()))
-    # then filtering the wanted modules
+    # then filtering the wanted integration tests
     integration_data = {key: test for key, test in integration_data.items() if key in sys.argv[1:]}
 
 # creating folders for the logs
@@ -53,8 +58,7 @@ for key_test, content_test in iter_tests:
     if len(targets_done) == total_targets:
         break
     for target in content_test["targets"]:
-        uid_test = key_test+target['name']
-        if uid_test not in targets_done:
+        if target['uid'] not in targets_done:
             sys.stdout.write(f"Querying target {target['name']}...\n")
             requests_counter[target['name']] += 1
             try:
@@ -96,7 +100,7 @@ for key_test, content_test in iter_tests:
 
                     # Rewriting the file
                     json.dump(filtered_data, output_file, indent=4)
-                targets_done.add(uid_test)
+                targets_done.add(target['uid'])
             except requests.exceptions.ConnectionError:
                 sys.stdout.write(f"Target {target} is not ready yet...\n")
                 # 0.5 seconds penalty in case of no response to avoid requests spamming and being
@@ -105,4 +109,4 @@ for key_test, content_test in iter_tests:
             if requests_counter[target['name']] > MAX_REQ:
                 sys.stdout.write(
                     f"Target {target['name']} from test {key_test} takes too long to respond\nSkipping...\n")
-                targets_done.add(uid_test)
+                targets_done.add(target['uid'])
