@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Form</title>
+    <meta content="en" HTTP-EQUIV="content-language" />
+</head>
+
+<body>
+
+
+
+    <h1>Simple Form</h1>
+    <div class="container">
+        <form action="signup.html" method="post" id="signup">
+            <h1>Sign Up</h1>
+            <div class="field">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your fullname" />
+                <small></small>
+            </div>
+            <div class="field">
+                <label for="password">Password:</label>
+                <input type="text" id="password" name="password" placeholder="Enter your password" />
+                <small></small>
+            </div>
+            <div class="field">
+                <button type="submit" class="full">Submit</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        // show a message with a type of the input
+        function showMessage(input, message, type) {
+            // get the small element and set the message
+            const msg = input.parentNode.querySelector("small");
+            msg.innerText = message;
+            // update the class for the input
+            input.className = type ? "success" : "error";
+            return type;
+        }
+
+        function showError(input, message) {
+            return showMessage(input, message, false);
+        }
+
+        function showSuccess(input) {
+            return showMessage(input, "", true);
+        }
+
+        function hasValue(input, message) {
+            if (input.value.trim() === "") {
+                return showError(input, message);
+            }
+            return showSuccess(input);
+        }
+
+        function checkCredentials(name, password) {
+            return name.value === "admin" && password.value === "password";
+        }
+
+        const form = document.querySelector("#signup");
+
+        const NAME_REQUIRED = "Please enter your name";
+        const PASSWORD_REQUIRED = "Please enter your password";
+        const WRONG_CREDENTIALS = "Invalid credentials";
+
+        //make some requests to the endpoint 
+        const xhr = new XMLHttpRequest();
+        form.addEventListener("submit", function (event) {
+            // stop form submission
+            event.preventDefault();
+
+            // validate the form
+            let nameValid = hasValue(form.elements["name"], NAME_REQUIRED);
+            let passwordValid = hasValue(form.elements["password"], PASSWORD_REQUIRED);
+            // if valid, submit the form.
+            xhr.open("POST", '/website3/endpointForm.html');
+            xhr.send("name=" + form.elements['name'].value + "&password=" + form.elements['password'].value)
+            credentialValid = nameValid && passwordValid && checkCredentials(form.elements["name"], form.elements["password"]);
+            if (credentialValid) {
+                window.location = "/website3/internalTarget.html";
+            } else {
+                showError(form.elements["password"], WRONG_CREDENTIALS);
+            }
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>

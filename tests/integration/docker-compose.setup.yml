@@ -307,6 +307,16 @@ services:
     volumes:
       - ./test_crawler_auth/php/src:/var/www/html/
 
+  crawler_headless:
+    image: nginx$NGINX_HASH
+    volumes:
+      - ./test_crawler_headless/vue-webHist-built/:/usr/share/nginx/html/website1/
+      - ./test_crawler_headless/vue-memHist-built/:/usr/share/nginx/html/website2/
+      - ./test_crawler_headless/vanilla-website/:/usr/share/nginx/html/website3/
+      - ./test_crawler_headless/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - test-network
+
   # Wapiti container 
   # requires all the targets containers to work perfectly
   wapiti:
@@ -360,6 +370,8 @@ services:
       drupal9:
         condition: service_healthy
       drupal10:
+        condition: service_healthy
+      crawler_headless:
         condition: service_healthy
 
 volumes:
