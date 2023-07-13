@@ -5,10 +5,10 @@ COPY  packages /packages
 COPY ./html/src/index.html /usr/local/apache2/htdocs/index.html
 COPY ./vuln.cgi /usr/local/apache2/cgi-bin/vuln.cgi 
 
-RUN apt update &&\
-    apt install -f /packages/* curl -y --allow-downgrades &&\
-    apt clean -yq &&\
-    apt autoremove -yq &&\
+RUN apt-get -y update &&\
+    apt-get -y install -f /packages/* curl --allow-downgrades &&\
+    apt-get -y clean &&\
+    apt-get -y autoremove &&\
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* &&\
     truncate -s 0 /var/log/*log
 

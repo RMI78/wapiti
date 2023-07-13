@@ -210,7 +210,7 @@
                 "name": "http://csp/index.php"
             },
             {
-                "name": "http://csp/csp_secured.php}"
+                "name": "http://csp/csp_secured.php"
             }
         ]
     },

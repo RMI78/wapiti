@@ -2,10 +2,10 @@ ARG PHP_HASH_TAG=':8.1-apache'
 FROM php${PHP_HASH_TAG}
 EXPOSE 443 80 
 
-RUN apt-get update -y && \
-    apt-get install openssl -y && \
-    apt-get clean -yq && \
-    apt-get -y autoremove -yq && \
+RUN apt-get -y update && \
+    apt-get -y install openssl -y && \
+    apt-get -y clean && \
+    apt-get -y autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     truncate -s 0 /var/log/*log
 
