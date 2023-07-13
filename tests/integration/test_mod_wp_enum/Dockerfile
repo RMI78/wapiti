@@ -4,12 +4,12 @@ FROM wordpress${WP_HASH_TAG}
 ENV DEPENDENCIES "curl unzip"
 
 # Install zip utility
-RUN apt-get update -y &&\
-    apt-get install ${DEPENDENCIES} -y &&\  
-    apt-get dist-upgrade -y &&\
-    apt-get upgrade -y &&\
-    apt-get -y autoremove &&\
-    apt-get clean 
+RUN apt-get -yqq update &&\
+    apt-get -yqq install ${DEPENDENCIES} &&\  
+    apt-get -yqq dist-upgrade &&\
+    apt-get -yqq upgrade &&\
+    apt-get -yqq autoremove &&\
+    apt-get -yqq clean 
 
 
 # Install Contact Form 7 plugin

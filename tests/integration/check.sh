@@ -62,6 +62,8 @@ if [[ ${#assertions[@]} -ne ${#targets_name[@]} || ${#targets_name[@]} -ne ${#ou
     die "Error: different number of reports/assertion files, found ${#outputs[@]} outputs for ${#assertions[@]} assertions"
 fi
 
+EXIT_CODE=0
+
 # Comparing outputs and assertions is a 2-steps process:
 for i in "${!outputs[@]}"; do
 
@@ -70,8 +72,9 @@ for i in "${!outputs[@]}"; do
         echo "< : assertion"
         echo "> : output"
         diff <(jq --sort-keys . "${outputs[$i]}") <(jq --sort-keys . "${assertions[$i]}") || echo "---End of diff of assertion $(basename "${assertions[$i]}" .json) module ${MODULE_NAME}---"
+        EXIT_CODE=1
     else 
         echo -e "Assertion $(basename "${assertions[$i]}" .json) of module $MODULE_NAME is ${GREEN}respected${NC}"
     fi 
 done
-exit 0
+exit $EXIT_CODE
