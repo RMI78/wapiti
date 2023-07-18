@@ -4,43 +4,32 @@ FROM wordpress${WP_HASH_TAG}
 ENV DEPENDENCIES "curl unzip"
 
 # Install zip utility
-RUN apt-get -yqq update &&\
-    apt-get -yqq install ${DEPENDENCIES} &&\  
-    apt-get -yqq dist-upgrade &&\
-    apt-get -yqq upgrade &&\
-    apt-get -yqq autoremove &&\
-    apt-get -yqq clean 
+RUN apt-get update -y &&\
+    apt-get install ${DEPENDENCIES} -y --no-install-recommends &&\ 
+    apt-get -y autoremove &&\
+    apt-get clean 
 
+# Pre-moving files for a lightest image
+RUN rm -rf /var/www/html/* &&\ 
+    mv /usr/src/wordpress/* /var/www/html/
 
 # Install Contact Form 7 plugin
-RUN su -s /bin/sh www-data -c 'curl -o /tmp/contact-form-7.zip -SL https://downloads.wordpress.org/plugin/contact-form-7.5.7.5.zip &&\
-    unzip -o /tmp/contact-form-7.zip -d /usr/src/wordpress/wp-content/plugins &&\
-    rm /tmp/contact-form-7.zip'
+#         Yoast SEO plugin
+#         Jetpack plugin
+#         WorFence plugin
+#         WPForms plugin
+#         OceanWP Theme
+RUN echo 'https://downloads.wordpress.org/plugin/contact-form-7.5.7.5.zip' \
+    'https://downloads.wordpress.org/plugin/wordpress-seo.19.7.1.zip' \
+    'https://downloads.wordpress.org/plugin/jetpack.11.9.zip' \
+    'https://downloads.wordpress.org/plugin/wordfence.7.5.0.zip' \
+    'https://downloads.wordpress.org/plugin/wpforms-lite.1.7.5.3.zip' \
+    'https://downloads.wordpress.org/theme/oceanwp.3.4.3.zip' \
+    | xargs -P 6 -I {} sh -c 'curl -o /tmp/$(basename {} | cut -d'.' -f1).zip -SL {} && \
+    unzip -o /tmp/$(basename {} | cut -d'.' -f1) -d /var/www/html/wp-content/$(echo {} | cut -d'/' -f4)s/ && \
+    rm /tmp/$(basename {} | cut -d'.' -f1).zip'
 
-# Install Yoast SEO plugin
-RUN su -s /bin/sh www-data -c 'curl -o /tmp/yoast-seo.zip -SL https://downloads.wordpress.org/plugin/wordpress-seo.19.7.1.zip &&\
-    unzip -o /tmp/yoast-seo.zip -d /usr/src/wordpress/wp-content/plugins  &&\
-    rm /tmp/yoast-seo.zip'
 
-# Install Jetpack plugin
-RUN su -s /bin/sh www-data -c 'curl -o /tmp/jetpack.zip -SL https://downloads.wordpress.org/plugin/jetpack.11.9.zip &&\
-    unzip -o /tmp/jetpack.zip -d /usr/src/wordpress/wp-content/plugins &&\
-    rm /tmp/jetpack.zip'
-
-# Install WorFence plugin
-RUN su -s /bin/sh www-data -c 'curl -o /tmp/wordfence.zip -SL https://downloads.wordpress.org/plugin/wordfence.7.5.0.zip &&\
-    unzip -o /tmp/wordfence.zip -d /usr/src/wordpress/wp-content/plugins &&\
-    rm /tmp/wordfence.zip'
-
-# Install WPForms plugin
-RUN su -s /bin/sh www-data -c 'curl -o /tmp/wpforms.zip -SL https://downloads.wordpress.org/plugin/wpforms-lite.1.7.5.3.zip &&\
-    unzip -o /tmp/wpforms.zip -d /usr/src/wordpress/wp-content/plugins &&\
-    rm /tmp/wpforms.zip'
-
-# Install OceanWP Theme
-RUN su -s /bin/sh www-data -c 'curl -o /tmp/oceanwp.zip -SL https://downloads.wordpress.org/theme/oceanwp.3.4.3.zip &&\
-    unzip -o /tmp/oceanwp.zip -d /usr/src/wordpress/wp-content/themes &&\
-    rm /tmp/oceanwp.zip'
 
 # Start Apache
 CMD ["apache2-foreground"]

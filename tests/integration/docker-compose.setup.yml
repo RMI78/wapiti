@@ -37,6 +37,7 @@ services:
     <<: [ *default_mysql_setup, *healthcheck_mysql ]
     volumes:
       - wp_db_data:/var/lib/mysql
+      - ./test_mod_wp_enum/mock_wp_db.sql:/docker-entrypoint-initdb.d/mock_wp_db.sql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${WP_MYSQL_ROOT_PASSWORD}
