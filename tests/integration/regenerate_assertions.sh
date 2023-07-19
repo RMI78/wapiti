@@ -8,7 +8,12 @@ set -o nounset
 
 cd "$(dirname "$0")"
 
-mapfile -t modules_dirs < <(find .test -maxdepth 1 -mindepth 1 -type d)
+if [[ $# -eq 0 ]]; then
+    mapfile -t modules_dirs < <(find .test -maxdepth 1 -mindepth 1 -type d)
+else
+    tests=$*
+    mapfile -t modules_dirs < <(echo -e "${tests// /\\n}" | sed 's/^/.test\//')  
+fi
 
 for module in "${modules_dirs[@]}";do
     if [[ -d "./$(basename "${module}")/assertions" ]]; then
