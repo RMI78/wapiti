@@ -402,16 +402,6 @@
             }
         ]
     },
-    "test_mod_htp": {
-        "modules": "htp",
-        "supplementary_argument": "",
-        "report_filter_tree": {},
-        "targets": [
-            {
-                "name": "http://htp"
-            }
-        ]
-    },
     "test_mod_drupal_enum": {
         "modules": "drupal_enum",
         "supplementary_argument": "",
@@ -485,20 +475,41 @@
     "test_mod_methods": {
         "modules": "methods",
         "supplementary_argument": "",
-        "report_filter_tree": {},
+        "report_filter_tree": {
+            "vulnerabilities": {
+                "HTTP Methods": [
+                    {
+                        "method": "",
+                        "path": "",
+                        "info": "",
+                        "parameter": "",
+                        "module": "",
+                        "http_request": "",
+                        "wstg": ""
+                    }
+                ]
+            },
+            "infos": {
+                "target": "",
+                "crawled_pages": [
+                    {
+                        "request": {
+                            "url": "",
+                            "method": "",
+                            "headers": []
+                        },
+                        "response": {
+                            "status_code": 0,
+                            "body": "",
+                            "headers": []
+                        }
+                    }
+                ]
+            }
+        },
         "targets": [
             {
                 "name": "http://methods"
-            }
-        ]
-    },
-    "test_mod_nikto": {
-        "modules": "nikto",
-        "supplementary_argument": "",
-        "report_filter_tree": {},
-        "targets": [
-            {
-                "name": "http://nikto"
             }
         ]
     },
@@ -556,7 +567,37 @@
     "test_mod_shellshock": {
         "modules": "shellshock",
         "supplementary_argument": "",
-        "report_filter_tree": {},
+        "report_filter_tree": {
+            "vulnerabilities": {
+                "Command execution": [
+                    {
+                        "method": "",
+                        "path": "",
+                        "info": "",
+                        "parameter": "",
+                        "module": "",
+                        "wstg": ""
+                    }
+                ]
+            },
+            "infos": {
+                "target": "",
+                "crawled_pages": [
+                    {
+                        "request": {
+                            "url": "",
+                            "method": "",
+                            "headers": []
+                        },
+                        "response": {
+                            "status_code": 0,
+                            "body": "",
+                            "headers": []
+                        }
+                    }
+                ]
+            }
+        },
         "targets": [
             {
                 "name": "http://shellshock"
@@ -604,16 +645,6 @@
             }
         ]
     },
-    "test_mod_ssl": {
-        "modules": "ssl",
-        "supplementary_argument": "",
-        "report_filter_tree": {},
-        "targets": [
-            {
-                "name": "http://ssl"
-            }
-        ]
-    },
     "test_mod_ssrf": {
         "modules": "ssrf",
         "supplementary_argument": "",
@@ -637,7 +668,37 @@
     "test_mod_timesql": {
         "modules": "timesql",
         "supplementary_argument": "",
-        "report_filter_tree": {},
+        "report_filter_tree": {
+            "vulnerabilities": {
+                "SQL Injection": [
+                    {
+                        "method": "",
+                        "path": "",
+                        "info": "",
+                        "parameter": "",
+                        "module": "",
+                        "wstg": ""
+                    }
+                ]
+            },
+            "infos": {
+                "target": "",
+                "crawled_pages": [
+                    {
+                        "request": {
+                            "url": "",
+                            "method": "",
+                            "headers": []
+                        },
+                        "response": {
+                            "status_code": 0,
+                            "body": "",
+                            "headers": []
+                        }
+                    }
+                ]
+            }
+        },
         "targets": [
             {
                 "name": "http://timesql"
@@ -666,7 +727,6 @@
                         "info": "",
                         "parameter": "",
                         "module": "",
-                        "http_request": "",
                         "wstg": ""
                     }
                 ]
@@ -697,6 +757,26 @@
     },
     "test_crawler_auth": {
         "modules": "",
+        "report_filter_tree": {
+            "infos": {
+                "auth": null,
+                "target": "",
+                "crawled_pages": [
+                    {
+                        "request": {
+                            "url": "",
+                            "method": "",
+                            "headers": []
+                        },
+                        "response": {
+                            "status_code": 0,
+                            "body": "",
+                            "headers": []
+                        }
+                    }
+                ]
+            }
+        },
         "targets": [
             {
                 "name": "http://crawler_auth/basic/auth_basic.php",

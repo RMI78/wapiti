@@ -9,7 +9,7 @@ from itertools import chain
 from uuid import uuid4
 from time import sleep
 
-from misc_functions import purge_irrelevant_data, filter_data, all_keys_dicts
+from misc_functions import purge_irrelevant_data, filter_data, all_keys_dicts, sort_lists_in_dict
 from templates_and_data import DEFAULT_FILTER_TREE, EXISTING_MODULES, TREE_CHECKER
 
 # parsing and checking the json file containing the modules
@@ -96,6 +96,9 @@ for key_test, content_test in iter_tests:
                     # still exists somewhere in the detailed report
                     bloated_output_data.get("infos", {}).pop("date", None)
                     purge_irrelevant_data(filtered_data)
+
+                    # Arrays in JSONs needs to be ordered to prevent false positive
+                    sort_lists_in_dict(filtered_data)
 
                     # Rewriting the file
                     json.dump(filtered_data, output_file, indent=4)
