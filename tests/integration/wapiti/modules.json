@@ -765,8 +765,7 @@
                     {
                         "request": {
                             "url": "",
-                            "method": "",
-                            "headers": []
+                            "method": ""
                         },
                         "response": {
                             "status_code": 0,
