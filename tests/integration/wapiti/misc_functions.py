@@ -34,7 +34,7 @@ def filter_data(data, filter):
     make sure to write filter correctly or reinforce this function 
     """
     # Another check, type based, also considering if filter and data order match
-    assert type(data) is type(filter), \
+    assert (type(data) is type(filter)) or (type(data) is type(None)), \
         f"Mismatch content, filter element is {type(filter)} and data element is {type(data)}"
     if isinstance(data, dict):
         filtered_tree = defaultdict()
