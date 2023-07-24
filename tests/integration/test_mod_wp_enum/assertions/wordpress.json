@@ -1,0 +1,414 @@
+{
+    "vulnerabilities": {
+        "Fingerprint web application framework": [
+            {
+                "method": "GET",
+                "path": "/feed/",
+                "info": "{\"name\": \"WordPress\", \"versions\": [\"6.2\"], \"categories\": [\"CMS\", \"Blogs\"], \"groups\": [\"Content\"]}",
+                "level": 0,
+                "parameter": "",
+                "referer": "",
+                "module": "wp_enum",
+                "http_request": "GET /feed/ HTTP/1.1\nhost: wordpress\nconnection: keep-alive\nuser-agent: Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0\naccept-language: en-US\naccept-encoding: gzip, deflate, br\naccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+                "curl_command": "curl \"http://wordpress/feed/\"",
+                "wstg": [],
+                "detail": {
+                    "response": null
+                }
+            }
+        ]
+    },
+    "additionals": {
+        "Fingerprint web technology": [
+            {
+                "method": "GET",
+                "path": "/feed/",
+                "info": "{\"name\": \"WordPress\", \"versions\": [\"6.2\"], \"categories\": [\"CMS\", \"Blogs\"], \"groups\": [\"Content\"]}",
+                "level": 0,
+                "parameter": "",
+                "module": "wp_enum",
+                "http_request": "GET /feed/ HTTP/1.1\nhost: wordpress\nconnection: keep-alive\nuser-agent: Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0\naccept-language: en-US\naccept-encoding: gzip, deflate, br\naccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+                "wstg": [],
+                "detail": {
+                    "response": null
+                }
+            },
+            {
+                "method": "GET",
+                "path": "//wp-content/plugins/contact-form-7/readme.txt",
+                "info": "{\"name\": \"contact-form-7\", \"versions\": [\"5.7.5\"], \"categories\": [\"WordPress plugins\"], \"groups\": [\"Add-ons\"]}",
+                "level": 0,
+                "parameter": "",
+                "module": "wp_enum",
+                "http_request": "GET //wp-content/plugins/contact-form-7/readme.txt HTTP/1.1\nhost: wordpress\nconnection: keep-alive\nuser-agent: Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0\naccept-language: en-US\naccept-encoding: gzip, deflate, br\naccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+                "wstg": [
+                    "WSTG-INFO-02",
+                    "WSTG-INFO-08"
+                ],
+                "detail": {
+                    "response": {
+                        "status_code": 200,
+                        "headers": [
+                            [
+                                "server",
+                                "Apache/2.4.56 (Debian)"
+                            ],
+                            [
+                                "accept-ranges",
+                                "bytes"
+                            ],
+                            [
+                                "vary",
+                                "Accept-Encoding"
+                            ],
+                            [
+                                "content-length",
+                                "1750"
+                            ],
+                            [
+                                "keep-alive",
+                                "timeout=5, max=98"
+                            ],
+                            [
+                                "connection",
+                                "Keep-Alive"
+                            ],
+                            [
+                                "content-type",
+                                "text/plain"
+                            ]
+                        ]
+                    }
+                }
+            },
+            {
+                "method": "GET",
+                "path": "//wp-content/plugins/wordpress-seo/readme.txt",
+                "info": "{\"name\": \"wordpress-seo\", \"versions\": [\"19.7.1\"], \"categories\": [\"WordPress plugins\"], \"groups\": [\"Add-ons\"]}",
+                "level": 0,
+                "parameter": "",
+                "module": "wp_enum",
+                "http_request": "GET //wp-content/plugins/wordpress-seo/readme.txt HTTP/1.1\nhost: wordpress\nconnection: keep-alive\nuser-agent: Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0\naccept-language: en-US\naccept-encoding: gzip, deflate, br\naccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+                "wstg": [
+                    "WSTG-INFO-02",
+                    "WSTG-INFO-08"
+                ],
+                "detail": {
+                    "response": {
+                        "status_code": 200,
+                        "headers": [
+                            [
+                                "server",
+                                "Apache/2.4.56 (Debian)"
+                            ],
+                            [
+                                "accept-ranges",
+                                "bytes"
+                            ],
+                            [
+                                "vary",
+                                "Accept-Encoding"
+                            ],
+                            [
+                                "content-length",
+                                "7509"
+                            ],
+                            [
+                                "keep-alive",
+                                "timeout=5, max=97"
+                            ],
+                            [
+                                "connection",
+                                "Keep-Alive"
+                            ],
+                            [
+                                "content-type",
+                                "text/plain"
+                            ]
+                        ]
+                    }
+                }
+            },
+            {
+                "method": "GET",
+                "path": "//wp-content/plugins/akismet/readme.txt",
+                "info": "{\"name\": \"akismet\", \"versions\": [\"\"], \"categories\": [\"WordPress plugins\"], \"groups\": [\"Add-ons\"]}",
+                "level": 0,
+                "parameter": "",
+                "module": "wp_enum",
+                "http_request": "GET //wp-content/plugins/akismet/readme.txt HTTP/1.1\nhost: wordpress\nconnection: keep-alive\nuser-agent: Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0\naccept-language: en-US\naccept-encoding: gzip, deflate, br\naccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+                "wstg": [
+                    "WSTG-INFO-02",
+                    "WSTG-INFO-08"
+                ],
+                "detail": {
+                    "response": {
+                        "status_code": 403,
+                        "headers": [
+                            [
+                                "server",
+                                "Apache/2.4.56 (Debian)"
+                            ],
+                            [
+                                "content-length",
+                                "274"
+                            ],
+                            [
+                                "keep-alive",
+                                "timeout=5, max=95"
+                            ],
+                            [
+                                "connection",
+                                "Keep-Alive"
+                            ],
+                            [
+                                "content-type",
+                                "text/html; charset=iso-8859-1"
+                            ]
+                        ]
+                    }
+                }
+            },
+            {
+                "method": "GET",
+                "path": "//wp-content/plugins/jetpack/readme.txt",
+                "info": "{\"name\": \"jetpack\", \"versions\": [\"11.9\"], \"categories\": [\"WordPress plugins\"], \"groups\": [\"Add-ons\"]}",
+                "level": 0,
+                "parameter": "",
+                "module": "wp_enum",
+                "http_request": "GET //wp-content/plugins/jetpack/readme.txt HTTP/1.1\nhost: wordpress\nconnection: keep-alive\nuser-agent: Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0\naccept-language: en-US\naccept-encoding: gzip, deflate, br\naccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+                "wstg": [
+                    "WSTG-INFO-02",
+                    "WSTG-INFO-08"
+                ],
+                "detail": {
+                    "response": {
+                        "status_code": 200,
+                        "headers": [
+                            [
+                                "server",
+                                "Apache/2.4.56 (Debian)"
+                            ],
+                            [
+                                "accept-ranges",
+                                "bytes"
+                            ],
+                            [
+                                "vary",
+                                "Accept-Encoding"
+                            ],
+                            [
+                                "content-length",
+                                "10151"
+                            ],
+                            [
+                                "keep-alive",
+                                "timeout=5, max=92"
+                            ],
+                            [
+                                "connection",
+                                "Keep-Alive"
+                            ],
+                            [
+                                "content-type",
+                                "text/plain"
+                            ]
+                        ]
+                    }
+                }
+            },
+            {
+                "method": "GET",
+                "path": "//wp-content/plugins/wpforms-lite/readme.txt",
+                "info": "{\"name\": \"wpforms-lite\", \"versions\": [\"1.7.5.3\"], \"categories\": [\"WordPress plugins\"], \"groups\": [\"Add-ons\"]}",
+                "level": 0,
+                "parameter": "",
+                "module": "wp_enum",
+                "http_request": "GET //wp-content/plugins/wpforms-lite/readme.txt HTTP/1.1\nhost: wordpress\nconnection: keep-alive\nuser-agent: Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0\naccept-language: en-US\naccept-encoding: gzip, deflate, br\naccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+                "wstg": [
+                    "WSTG-INFO-02",
+                    "WSTG-INFO-08"
+                ],
+                "detail": {
+                    "response": {
+                        "status_code": 200,
+                        "headers": [
+                            [
+                                "server",
+                                "Apache/2.4.56 (Debian)"
+                            ],
+                            [
+                                "accept-ranges",
+                                "bytes"
+                            ],
+                            [
+                                "vary",
+                                "Accept-Encoding"
+                            ],
+                            [
+                                "content-length",
+                                "13981"
+                            ],
+                            [
+                                "keep-alive",
+                                "timeout=5, max=90"
+                            ],
+                            [
+                                "connection",
+                                "Keep-Alive"
+                            ],
+                            [
+                                "content-type",
+                                "text/plain"
+                            ]
+                        ]
+                    }
+                }
+            },
+            {
+                "method": "GET",
+                "path": "//wp-content/plugins/wordfence/readme.txt",
+                "info": "{\"name\": \"wordfence\", \"versions\": [\"7.5.0\"], \"categories\": [\"WordPress plugins\"], \"groups\": [\"Add-ons\"]}",
+                "level": 0,
+                "parameter": "",
+                "module": "wp_enum",
+                "http_request": "GET //wp-content/plugins/wordfence/readme.txt HTTP/1.1\nhost: wordpress\nconnection: keep-alive\nuser-agent: Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0\naccept-language: en-US\naccept-encoding: gzip, deflate, br\naccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+                "wstg": [
+                    "WSTG-INFO-02",
+                    "WSTG-INFO-08"
+                ],
+                "detail": {
+                    "response": {
+                        "status_code": 200,
+                        "headers": [
+                            [
+                                "server",
+                                "Apache/2.4.56 (Debian)"
+                            ],
+                            [
+                                "accept-ranges",
+                                "bytes"
+                            ],
+                            [
+                                "vary",
+                                "Accept-Encoding"
+                            ],
+                            [
+                                "content-length",
+                                "27286"
+                            ],
+                            [
+                                "keep-alive",
+                                "timeout=5, max=89"
+                            ],
+                            [
+                                "connection",
+                                "Keep-Alive"
+                            ],
+                            [
+                                "content-type",
+                                "text/plain"
+                            ]
+                        ]
+                    }
+                }
+            },
+            {
+                "method": "GET",
+                "path": "//wp-content/themes/twentytwentyone/readme.txt",
+                "info": "{\"name\": \"twentytwentyone\", \"versions\": [\"1.8\"], \"categories\": [\"WordPress themes\"], \"groups\": [\"Add-ons\"]}",
+                "level": 0,
+                "parameter": "",
+                "module": "wp_enum",
+                "http_request": "GET //wp-content/themes/twentytwentyone/readme.txt HTTP/1.1\nhost: wordpress\nconnection: keep-alive\nuser-agent: Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0\naccept-language: en-US\naccept-encoding: gzip, deflate, br\naccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+                "wstg": [
+                    "WSTG-INFO-02",
+                    "WSTG-INFO-08"
+                ],
+                "detail": {
+                    "response": {
+                        "status_code": 200,
+                        "headers": [
+                            [
+                                "server",
+                                "Apache/2.4.56 (Debian)"
+                            ],
+                            [
+                                "accept-ranges",
+                                "bytes"
+                            ],
+                            [
+                                "vary",
+                                "Accept-Encoding"
+                            ],
+                            [
+                                "content-length",
+                                "1957"
+                            ],
+                            [
+                                "keep-alive",
+                                "timeout=5, max=94"
+                            ],
+                            [
+                                "connection",
+                                "Keep-Alive"
+                            ],
+                            [
+                                "content-type",
+                                "text/plain"
+                            ]
+                        ]
+                    }
+                }
+            },
+            {
+                "method": "GET",
+                "path": "//wp-content/themes/oceanwp/readme.txt",
+                "info": "{\"name\": \"oceanwp\", \"versions\": [\"3.4.3\"], \"categories\": [\"WordPress themes\"], \"groups\": [\"Add-ons\"]}",
+                "level": 0,
+                "parameter": "",
+                "module": "wp_enum",
+                "http_request": "GET //wp-content/themes/oceanwp/readme.txt HTTP/1.1\nhost: wordpress\nconnection: keep-alive\nuser-agent: Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0\naccept-language: en-US\naccept-encoding: gzip, deflate, br\naccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+                "wstg": [
+                    "WSTG-INFO-02",
+                    "WSTG-INFO-08"
+                ],
+                "detail": {
+                    "response": {
+                        "status_code": 200,
+                        "headers": [
+                            [
+                                "server",
+                                "Apache/2.4.56 (Debian)"
+                            ],
+                            [
+                                "accept-ranges",
+                                "bytes"
+                            ],
+                            [
+                                "vary",
+                                "Accept-Encoding"
+                            ],
+                            [
+                                "content-length",
+                                "2533"
+                            ],
+                            [
+                                "keep-alive",
+                                "timeout=5, max=88"
+                            ],
+                            [
+                                "connection",
+                                "Keep-Alive"
+                            ],
+                            [
+                                "content-type",
+                                "text/plain"
+                            ]
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}
