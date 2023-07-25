@@ -729,5 +729,18 @@
                 "supplementary_argument": " --form-user admin --form-password password  --form-url http://crawler_auth/url/auth_url.php"
             }
         ]
+    },
+    "test_mod_drupal_enum": {
+        "modules": "drupal_enum",
+        "supplementary_argument": "",
+        "report_filter_tree": {},
+        "targets": [
+            {
+                "name": "http://drupal9"
+            },
+            {
+                "name": "http://drupal10"
+            }
+        ]
     }
 }

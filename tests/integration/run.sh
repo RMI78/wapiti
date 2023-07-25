@@ -18,6 +18,7 @@ test_mod_sql \
 test_mod_shellshock \
 test_mod_methods \
 test_mod_timesql \
+test_mod_drupal_enum \
 test_crawler_auth "
 
 # Normalize trailing space for shell substitution
