@@ -11,6 +11,7 @@
         "Fingerprint web application framework": [],
         "Fingerprint web server": [],
         "Htaccess Bypass": [],
+        "HTML Injection": [],
         "HTTP Secure Headers": [],
         "HttpOnly Flag cookie": [],
         "Log4Shell": [],
@@ -20,6 +21,7 @@
         "SQL Injection": [],
         "TLS/SSL misconfigurations": [],
         "Server Side Request Forgery": [],
+        "Stored HTML Injection": [],
         "Stored Cross Site Scripting": [],
         "Subdomain takeover": [],
         "Blind SQL Injection": [],
@@ -46,28 +48,28 @@
                     "method": "GET",
                     "headers": [
                         [
-                            "host",
-                            "backup"
-                        ],
-                        [
-                            "connection",
-                            "keep-alive"
-                        ],
-                        [
-                            "user-agent",
-                            "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"
-                        ],
-                        [
-                            "accept-language",
-                            "en-US"
+                            "accept",
+                            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
                         ],
                         [
                             "accept-encoding",
                             "gzip, deflate, br"
                         ],
                         [
-                            "accept",
-                            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+                            "accept-language",
+                            "en-US"
+                        ],
+                        [
+                            "connection",
+                            "keep-alive"
+                        ],
+                        [
+                            "host",
+                            "backup"
+                        ],
+                        [
+                            "user-agent",
+                            "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"
                         ]
                     ],
                     "referer": "",
@@ -80,16 +82,12 @@
                     "body": "<!DOCTYPE html>\n\n<html>\n\n<head>\n\n\t<meta charset=\"UTF-8\">\n\n\t<title>Backup</title>\n\n</head>\n\n<body>\n\n\n\n\t<p>Here you can find a backup file supposed to be in the same directory</p>\n\n\n\n</body>\n\n</html>\n",
                     "headers": [
                         [
-                            "server",
-                            "Apache/2.4.56 (Debian)"
-                        ],
-                        [
                             "accept-ranges",
                             "bytes"
                         ],
                         [
-                            "vary",
-                            "Accept-Encoding"
+                            "connection",
+                            "Keep-Alive"
                         ],
                         [
                             "content-encoding",
@@ -100,16 +98,16 @@
                             "165"
                         ],
                         [
-                            "keep-alive",
-                            "timeout=5, max=100"
-                        ],
-                        [
-                            "connection",
-                            "Keep-Alive"
-                        ],
-                        [
                             "content-type",
                             "text/html"
+                        ],
+                        [
+                            "server",
+                            "Apache/2.4.56 (Debian)"
+                        ],
+                        [
+                            "vary",
+                            "Accept-Encoding"
                         ]
                     ]
                 }
