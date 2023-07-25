@@ -45,6 +45,12 @@ services:
       MYSQL_USER: ${WP_MYSQL_USER}
       MYSQL_PASSWORD: ${WP_MYSQL_PASSWORD}
 
+  # Apache server for the backup module
+  backup:
+    <<: [ *default_php_setup, *healthcheck_web ]
+    volumes:
+      - ./test_mod_backup/html/:/var/www/html/
+
   # Wordpress container 
   wordpress:
     build:
@@ -84,6 +90,8 @@ services:
       - test-network
     command: "${TESTS}"
     depends_on:
+      backup:
+        condition: service_healthy
       wordpress:
         condition: service_healthy
 
