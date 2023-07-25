@@ -1,0 +1,639 @@
+{
+    "vulnerabilities": {
+        "Cross Site Request Forgery": [
+            {
+                "method": "POST",
+                "path": "/fake_protected_form.php",
+                "info": "CSRF token 'csrf_token' might be easy to predict",
+                "parameter": "",
+                "module": "csrf",
+                "http_request": "POST /fake_protected_form.php HTTP/1.1\ncontent-type: application/x-www-form-urlencoded, application/x-www-form-urlencoded\nhost: csrf\nconnection: keep-alive\nuser-agent: Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0\naccept-language: en-US\naccept-encoding: gzip, deflate, br\naccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\nreferer: http://csrf/fake_protected_form.php\ncookie: PHPSESSID=1335df1b1b4a214\ncontent-length: 39\nContent-Type: application/x-www-form-urlencoded\n\ncsrf_token=AAAAAAAAAAAAAAA&name=default",
+                "wstg": [
+                    "WSTG-SESS-05"
+                ]
+            },
+            {
+                "method": "POST",
+                "path": "/unprotected_form.php",
+                "info": "Lack of anti CSRF token",
+                "parameter": "",
+                "module": "csrf",
+                "http_request": "POST /unprotected_form.php HTTP/1.1\nhost: csrf\nconnection: keep-alive\nuser-agent: Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0\naccept-language: en-US\naccept-encoding: gzip, deflate, br\naccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\ncontent-type: application/x-www-form-urlencoded\nreferer: http://csrf/unprotected_form.php\ncookie: PHPSESSID=1335df1b1b4a214\ncontent-length: 12\nContent-Type: application/x-www-form-urlencoded\n\nname=default",
+                "wstg": [
+                    "WSTG-SESS-05"
+                ]
+            }
+        ]
+    },
+    "infos": {
+        "target": "http://csrf/",
+        "crawled_pages": [
+            {
+                "request": {
+                    "url": "http://csrf/",
+                    "method": "GET",
+                    "headers": [
+                        [
+                            "accept",
+                            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+                        ],
+                        [
+                            "accept-encoding",
+                            "gzip, deflate, br"
+                        ],
+                        [
+                            "accept-language",
+                            "en-US"
+                        ],
+                        [
+                            "connection",
+                            "keep-alive"
+                        ],
+                        [
+                            "host",
+                            "csrf"
+                        ],
+                        [
+                            "user-agent",
+                            "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"
+                        ]
+                    ]
+                },
+                "response": {
+                    "status_code": 200,
+                    "body": "<!DOCTYPE html>\n<html>\n<head>\n\t<title>Index</title>\n</head>\n<body>\n\t<h1>Index</h1>\n\t<p>This is a simple PHP web page.</p>\n    <ul>\n        <li><a href=\"unprotected_form.php\">unprotected form</a></li>\n        <li><a href=\"protected_form.php\">protected form</a></li>\n        <li><a href=\"fake_protected_form.php\">weak protected form</a></li> \n    </ul>\n</body>\n</html>\n",
+                    "headers": [
+                        [
+                            "connection",
+                            "Keep-Alive"
+                        ],
+                        [
+                            "content-encoding",
+                            "gzip"
+                        ],
+                        [
+                            "content-length",
+                            "198"
+                        ],
+                        [
+                            "content-type",
+                            "text/html; charset=UTF-8"
+                        ],
+                        [
+                            "server",
+                            "Apache/2.4.56 (Debian)"
+                        ],
+                        [
+                            "vary",
+                            "Accept-Encoding"
+                        ],
+                        [
+                            "x-powered-by",
+                            "PHP/8.1.18"
+                        ]
+                    ]
+                }
+            },
+            {
+                "request": {
+                    "url": "http://csrf/fake_protected_form.php",
+                    "method": "GET",
+                    "headers": [
+                        [
+                            "accept",
+                            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+                        ],
+                        [
+                            "accept-encoding",
+                            "gzip, deflate, br"
+                        ],
+                        [
+                            "accept-language",
+                            "en-US"
+                        ],
+                        [
+                            "connection",
+                            "keep-alive"
+                        ],
+                        [
+                            "host",
+                            "csrf"
+                        ],
+                        [
+                            "user-agent",
+                            "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"
+                        ]
+                    ]
+                },
+                "response": {
+                    "status_code": 200,
+                    "body": "<!DOCTYPE html><html><head>\t<meta charset=\"UTF-8\">\t<title>CSRF protected test</title></head><body>    <form method=\"POST\">    <label for=\"name\">Name:</label>    <input type=\"hidden\" name=\"csrf_token\" value=\"AAAAAAAAAAAAAAA\">    <input type=\"text\" id=\"name\" name=\"name\"><br><br>    <input type=\"submit\" value=\"Update\">    </form></body></html>",
+                    "headers": [
+                        [
+                            "cache-control",
+                            "no-store, no-cache, must-revalidate"
+                        ],
+                        [
+                            "connection",
+                            "Keep-Alive"
+                        ],
+                        [
+                            "content-encoding",
+                            "gzip"
+                        ],
+                        [
+                            "content-length",
+                            "226"
+                        ],
+                        [
+                            "content-type",
+                            "text/html; charset=UTF-8"
+                        ],
+                        [
+                            "expires",
+                            "Thu, 19 Nov 1981 08:52:00 GMT"
+                        ],
+                        [
+                            "pragma",
+                            "no-cache"
+                        ],
+                        [
+                            "server",
+                            "Apache/2.4.56 (Debian)"
+                        ],
+                        [
+                            "set-cookie",
+                            "PHPSESSID=1335df1b1b4a214; path=/"
+                        ],
+                        [
+                            "vary",
+                            "Accept-Encoding"
+                        ],
+                        [
+                            "x-powered-by",
+                            "PHP/8.1.18"
+                        ]
+                    ]
+                }
+            },
+            {
+                "request": {
+                    "url": "http://csrf/fake_protected_form.php",
+                    "method": "POST",
+                    "headers": [
+                        [
+                            "accept",
+                            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+                        ],
+                        [
+                            "accept-encoding",
+                            "gzip, deflate, br"
+                        ],
+                        [
+                            "accept-language",
+                            "en-US"
+                        ],
+                        [
+                            "connection",
+                            "keep-alive"
+                        ],
+                        [
+                            "content-length",
+                            "39"
+                        ],
+                        [
+                            "content-type",
+                            "application/x-www-form-urlencoded"
+                        ],
+                        [
+                            "cookie",
+                            "PHPSESSID=1335df1b1b4a214"
+                        ],
+                        [
+                            "host",
+                            "csrf"
+                        ],
+                        [
+                            "referer",
+                            "http://csrf/fake_protected_form.php"
+                        ],
+                        [
+                            "user-agent",
+                            "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"
+                        ]
+                    ]
+                },
+                "response": {
+                    "status_code": 200,
+                    "body": "<!DOCTYPE html><html><head>\t<meta charset=\"UTF-8\">\t<title>CSRF protected test</title></head><body>    <form method=\"POST\">    <label for=\"name\">Name:</label>    <input type=\"hidden\" name=\"csrf_token\" value=\"AAAAAAAAAAAAAAA\">    <input type=\"text\" id=\"name\" name=\"name\"><br><br>    <input type=\"submit\" value=\"Update\">    </form></body></html>form submitted !",
+                    "headers": [
+                        [
+                            "cache-control",
+                            "no-store, no-cache, must-revalidate"
+                        ],
+                        [
+                            "connection",
+                            "Keep-Alive"
+                        ],
+                        [
+                            "content-encoding",
+                            "gzip"
+                        ],
+                        [
+                            "content-length",
+                            "232"
+                        ],
+                        [
+                            "content-type",
+                            "text/html; charset=UTF-8"
+                        ],
+                        [
+                            "expires",
+                            "Thu, 19 Nov 1981 08:52:00 GMT"
+                        ],
+                        [
+                            "pragma",
+                            "no-cache"
+                        ],
+                        [
+                            "server",
+                            "Apache/2.4.56 (Debian)"
+                        ],
+                        [
+                            "set-cookie",
+                            "PHPSESSID=1335df1b1b4a214; path=/"
+                        ],
+                        [
+                            "vary",
+                            "Accept-Encoding"
+                        ],
+                        [
+                            "x-powered-by",
+                            "PHP/8.1.18"
+                        ]
+                    ]
+                }
+            },
+            {
+                "request": {
+                    "url": "http://csrf/protected_form.php",
+                    "method": "GET",
+                    "headers": [
+                        [
+                            "accept",
+                            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+                        ],
+                        [
+                            "accept-encoding",
+                            "gzip, deflate, br"
+                        ],
+                        [
+                            "accept-language",
+                            "en-US"
+                        ],
+                        [
+                            "connection",
+                            "keep-alive"
+                        ],
+                        [
+                            "host",
+                            "csrf"
+                        ],
+                        [
+                            "user-agent",
+                            "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"
+                        ]
+                    ]
+                },
+                "response": {
+                    "status_code": 200,
+                    "body": "<!DOCTYPE html><html><head>\t<meta charset=\"UTF-8\">\t<title>CSRF protected test</title></head><body>    <form method=\"POST\">    <label for=\"name\">Name:</label>    <input type=\"hidden\" name=\"csrf_token\" value=\"d1db91e58e9f4710f1015bfcd12eea15df6663202d7bf5cb97d72a32044d8f35\">    <input type=\"text\" id=\"name\" name=\"name\"><br><br>    <input type=\"submit\" value=\"Update\">    </form></body></html>",
+                    "headers": [
+                        [
+                            "cache-control",
+                            "no-store, no-cache, must-revalidate"
+                        ],
+                        [
+                            "connection",
+                            "Keep-Alive"
+                        ],
+                        [
+                            "content-encoding",
+                            "gzip"
+                        ],
+                        [
+                            "content-length",
+                            "273"
+                        ],
+                        [
+                            "content-type",
+                            "text/html; charset=UTF-8"
+                        ],
+                        [
+                            "expires",
+                            "Thu, 19 Nov 1981 08:52:00 GMT"
+                        ],
+                        [
+                            "pragma",
+                            "no-cache"
+                        ],
+                        [
+                            "server",
+                            "Apache/2.4.56 (Debian)"
+                        ],
+                        [
+                            "set-cookie",
+                            "PHPSESSID=1335df1b1b4a2149e8690c7ce5fc3932; path=/"
+                        ],
+                        [
+                            "vary",
+                            "Accept-Encoding"
+                        ],
+                        [
+                            "x-powered-by",
+                            "PHP/8.1.18"
+                        ]
+                    ]
+                }
+            },
+            {
+                "request": {
+                    "url": "http://csrf/protected_form.php",
+                    "method": "POST",
+                    "headers": [
+                        [
+                            "accept",
+                            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+                        ],
+                        [
+                            "accept-encoding",
+                            "gzip, deflate, br"
+                        ],
+                        [
+                            "accept-language",
+                            "en-US"
+                        ],
+                        [
+                            "connection",
+                            "keep-alive"
+                        ],
+                        [
+                            "content-length",
+                            "88"
+                        ],
+                        [
+                            "content-type",
+                            "application/x-www-form-urlencoded"
+                        ],
+                        [
+                            "cookie",
+                            "PHPSESSID=1335df1b1b4a2149e8690c7ce5fc3932"
+                        ],
+                        [
+                            "host",
+                            "csrf"
+                        ],
+                        [
+                            "referer",
+                            "http://csrf/protected_form.php"
+                        ],
+                        [
+                            "user-agent",
+                            "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"
+                        ]
+                    ]
+                },
+                "response": {
+                    "status_code": 200,
+                    "body": "<!DOCTYPE html><html><head>\t<meta charset=\"UTF-8\">\t<title>CSRF protected test</title></head><body>    <form method=\"POST\">    <label for=\"name\">Name:</label>    <input type=\"hidden\" name=\"csrf_token\" value=\"d1db91e58e9f4710f1015bfcd12eea15df6663202d7bf5cb97d72a32044d8f35\">    <input type=\"text\" id=\"name\" name=\"name\"><br><br>    <input type=\"submit\" value=\"Update\">    </form></body></html>form submitted !",
+                    "headers": [
+                        [
+                            "cache-control",
+                            "no-store, no-cache, must-revalidate"
+                        ],
+                        [
+                            "connection",
+                            "Keep-Alive"
+                        ],
+                        [
+                            "content-encoding",
+                            "gzip"
+                        ],
+                        [
+                            "content-length",
+                            "279"
+                        ],
+                        [
+                            "content-type",
+                            "text/html; charset=UTF-8"
+                        ],
+                        [
+                            "expires",
+                            "Thu, 19 Nov 1981 08:52:00 GMT"
+                        ],
+                        [
+                            "pragma",
+                            "no-cache"
+                        ],
+                        [
+                            "server",
+                            "Apache/2.4.56 (Debian)"
+                        ],
+                        [
+                            "set-cookie",
+                            "PHPSESSID=1335df1b1b4a2149e8690c7ce5fc3932; path=/"
+                        ],
+                        [
+                            "vary",
+                            "Accept-Encoding"
+                        ],
+                        [
+                            "x-powered-by",
+                            "PHP/8.1.18"
+                        ]
+                    ]
+                }
+            },
+            {
+                "request": {
+                    "url": "http://csrf/unprotected_form.php",
+                    "method": "GET",
+                    "headers": [
+                        [
+                            "accept",
+                            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+                        ],
+                        [
+                            "accept-encoding",
+                            "gzip, deflate, br"
+                        ],
+                        [
+                            "accept-language",
+                            "en-US"
+                        ],
+                        [
+                            "connection",
+                            "keep-alive"
+                        ],
+                        [
+                            "host",
+                            "csrf"
+                        ],
+                        [
+                            "user-agent",
+                            "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"
+                        ]
+                    ]
+                },
+                "response": {
+                    "status_code": 200,
+                    "body": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta charset=\"UTF-8\">\n\t<title>CSRF unprotected test</title>\n</head>\n<body>\n    <form method=\"post\">\n    <label for=\"name\">Name:</label>\n    <input type=\"text\" id=\"name\" name=\"name\"><br><br>\n    <input type=\"submit\" value=\"Update\">\n    </form>\n</body>\n</html>\n\n",
+                    "headers": [
+                        [
+                            "cache-control",
+                            "no-store, no-cache, must-revalidate"
+                        ],
+                        [
+                            "connection",
+                            "Keep-Alive"
+                        ],
+                        [
+                            "content-encoding",
+                            "gzip"
+                        ],
+                        [
+                            "content-length",
+                            "206"
+                        ],
+                        [
+                            "content-type",
+                            "text/html; charset=UTF-8"
+                        ],
+                        [
+                            "expires",
+                            "Thu, 19 Nov 1981 08:52:00 GMT"
+                        ],
+                        [
+                            "pragma",
+                            "no-cache"
+                        ],
+                        [
+                            "server",
+                            "Apache/2.4.56 (Debian)"
+                        ],
+                        [
+                            "set-cookie",
+                            "PHPSESSID=1335df1b1b4a2149e8690c7ce5; path=/"
+                        ],
+                        [
+                            "vary",
+                            "Accept-Encoding"
+                        ],
+                        [
+                            "x-powered-by",
+                            "PHP/8.1.18"
+                        ]
+                    ]
+                }
+            },
+            {
+                "request": {
+                    "url": "http://csrf/unprotected_form.php",
+                    "method": "POST",
+                    "headers": [
+                        [
+                            "accept",
+                            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+                        ],
+                        [
+                            "accept-encoding",
+                            "gzip, deflate, br"
+                        ],
+                        [
+                            "accept-language",
+                            "en-US"
+                        ],
+                        [
+                            "connection",
+                            "keep-alive"
+                        ],
+                        [
+                            "content-length",
+                            "12"
+                        ],
+                        [
+                            "content-type",
+                            "application/x-www-form-urlencoded"
+                        ],
+                        [
+                            "cookie",
+                            "PHPSESSID=1335df1b1b4a214"
+                        ],
+                        [
+                            "host",
+                            "csrf"
+                        ],
+                        [
+                            "referer",
+                            "http://csrf/unprotected_form.php"
+                        ],
+                        [
+                            "user-agent",
+                            "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"
+                        ]
+                    ]
+                },
+                "response": {
+                    "status_code": 200,
+                    "body": "form submitted !<!DOCTYPE html>\n<html>\n<head>\n\t<meta charset=\"UTF-8\">\n\t<title>CSRF unprotected test</title>\n</head>\n<body>\n    <form method=\"post\">\n    <label for=\"name\">Name:</label>\n    <input type=\"text\" id=\"name\" name=\"name\"><br><br>\n    <input type=\"submit\" value=\"Update\">\n    </form>\n</body>\n</html>\n\n",
+                    "headers": [
+                        [
+                            "cache-control",
+                            "no-store, no-cache, must-revalidate"
+                        ],
+                        [
+                            "connection",
+                            "Keep-Alive"
+                        ],
+                        [
+                            "content-encoding",
+                            "gzip"
+                        ],
+                        [
+                            "content-length",
+                            "215"
+                        ],
+                        [
+                            "content-type",
+                            "text/html; charset=UTF-8"
+                        ],
+                        [
+                            "expires",
+                            "Thu, 19 Nov 1981 08:52:00 GMT"
+                        ],
+                        [
+                            "pragma",
+                            "no-cache"
+                        ],
+                        [
+                            "server",
+                            "Apache/2.4.56 (Debian)"
+                        ],
+                        [
+                            "set-cookie",
+                            "PHPSESSID=1335df1b1b4a2149e8690c7ce5; path=/"
+                        ],
+                        [
+                            "vary",
+                            "Accept-Encoding"
+                        ],
+                        [
+                            "x-powered-by",
+                            "PHP/8.1.18"
+                        ]
+                    ]
+                }
+            }
+        ]
+    }
+}
