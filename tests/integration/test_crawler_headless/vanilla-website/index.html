@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+
+    </div>
+    <script>
+        const BASE_URL = "/website3";
+        const rootDiv = document.getElementById('root');
+
+        // Array of button data
+        const elements = [
+            { type: 'p', label: 'Redirections' },
+            { type: 'button', label: 'Internal Location', function: () => { window.location = BASE_URL + '/internalTarget.html' } },
+            { type: 'button', label: 'External Location', function: () => { window.location = 'http://www.example.com' } },
+            { type: 'button', label: 'Function Absolute', function: () => { setTimeout(() => { window.location = BASE_URL + '/internalTarget.html' }, 5000) } },
+            { type: 'button', label: 'Function Relative', function: () => { window.location = BASE_URL + '/functionRelative.html' } },
+            { type: 'p', label: 'Links' },
+            { type: 'button', label: 'onChange location', function: () => { window.location = BASE_URL + '/onChangeLocation.html' } },
+            { type: 'button', label: 'Open Window', function: () => { window.open(BASE_URL + '/internalTarget.html', 'jav', 'width=320,height=568,resizable=yes'); } },
+            { type: 'button', label: 'onMouseDown event', function: () => { window.location = BASE_URL + '/onMouseDown.html' } },
+            {
+                type: 'button', label: 'Concatenated Button', function: () => {
+                    var str1 = "/internal";
+                    var str2 = "Target.html";
+                    const pop_button = document.createElement('a');
+                    pop_button.href = BASE_URL.concat(str1, str2);
+                    pop_button.textContent = "Concatenated link"
+                    document.body.appendChild(pop_button)
+                }
+            },
+            { type: 'button', label: 'data href link', function: () => { window.location = BASE_URL + '/dataHrefLink.html' } },
+            { type: 'p', label: 'Content' },
+            { type: 'button', label: 'alert', function: () => { alert("this is an alert") } },
+            { type: 'button', label: 'Rendering', function: () => { window.location = BASE_URL + '/rendering.html' } },
+            { type: 'p', label: 'Forms' },
+            { type: 'button', label: 'Simple form', function: () => { window.location = BASE_URL + '/simpleForm.html' } },
+        ];
+
+        for (let i = 0; i < elements.length; i++) {
+            const elementData = elements[i];
+
+            const element = document.createElement(elementData.type);
+            element.textContent = elementData.label;
+            if (elementData.type === 'button')
+                element.addEventListener('click', elementData.function);
+
+            // Append the button to the body element
+            document.body.appendChild(element);
+        }
+    </script>
+</body>
+
+</html>

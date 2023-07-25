@@ -1,0 +1,12 @@
+<html>
+
+<head>
+    <title>javascript:data-href link</title>
+</head>
+
+<body><a data-href="/website3/internalTarget.html" id="link">Click me</a>
+    <script
+        type="text/javascript"> var link = document.getElementById('link'); link.addEventListener('click', function () { window.location = this.getAttribute("data-href"); }, false); </script>
+</body>
+
+</html>

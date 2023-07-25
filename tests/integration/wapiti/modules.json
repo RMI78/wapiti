@@ -742,5 +742,20 @@
                 "name": "http://drupal10"
             }
         ]
+    },
+    "test_crawler_headless": {
+        "modules": "brute_login_form",
+        "supplementary_argument": "--headless hidden",
+        "targets": [
+            {
+                "name": "http://crawler_headless/website1/index.html"
+            },
+            {
+                "name": "http://crawler_headless/website2/index.html"
+            },
+            {
+                "name": "http://crawler_headless/website3/index.html"
+            }
+        ]
     }
 }
