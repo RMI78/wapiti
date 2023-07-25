@@ -70,6 +70,12 @@ services:
     volumes:
       - ./test_mod_file/php/src:/var/www/html/
 
+  # Apache container for the cookieflags module
+  cookieflags:
+    <<: [ *default_php_setup, *healthcheck_web ]
+    volumes:
+      - ./test_mod_cookieflags/php/src:/var/www/html/
+
   # Apache container for the csp module
   csp:
     <<: [ *default_php_setup, *healthcheck_web ]
@@ -126,6 +132,8 @@ services:
       http_headers:
         condition: service_healthy
       file:
+        condition: service_healthy
+      cookieflags:
         condition: service_healthy
       csp:
         condition: service_healthy

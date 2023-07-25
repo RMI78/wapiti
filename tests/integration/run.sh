@@ -28,7 +28,8 @@ test_mod_backup \
 test_mod_http_headers \
 test_mod_file \
 test_mod_csrf \
-test_mod_csp "
+test_mod_csp \
+test_mod_cookieflags "
 
 # Normalize trailing space for shell substitution
 if [[ ! -z "$TESTS" ]]; then
