@@ -1,95 +1,21 @@
 {
     "vulnerabilities": {
-        "Backup file": [],
         "Weak credentials": [
             {
                 "method": "POST",
                 "path": "/index.php",
                 "info": "Credentials found for URL http://brute_login_form/ : admin / admin",
-                "level": 1,
                 "parameter": "",
-                "referer": "http://brute_login_form/",
                 "module": "brute_login_form",
                 "http_request": "POST /index.php HTTP/1.1\nContent-Type: application/x-www-form-urlencoded\n\nusername=admin&password=admin",
-                "curl_command": "curl \"http://brute_login_form/index.php\" -e \"http://brute_login_form/\" -d \"username=admin&password=admin\"",
                 "wstg": [
                     "WSTG-ATHN-07"
-                ],
-                "detail": {
-                    "response": {
-                        "status_code": 200,
-                        "body": "Your form has been submitted successfully.",
-                        "headers": [
-                            [
-                                "server",
-                                "Apache/2.4.56 (Debian)"
-                            ],
-                            [
-                                "x-powered-by",
-                                "PHP/8.1.18"
-                            ],
-                            [
-                                "custom-header",
-                                "Custom-Value"
-                            ],
-                            [
-                                "content-length",
-                                "42"
-                            ],
-                            [
-                                "keep-alive",
-                                "timeout=5, max=98"
-                            ],
-                            [
-                                "connection",
-                                "Keep-Alive"
-                            ],
-                            [
-                                "content-type",
-                                "text/html;charset=UTF-8"
-                            ]
-                        ]
-                    }
-                }
+                ]
             }
-        ],
-        "CRLF Injection": [],
-        "Content Security Policy Configuration": [],
-        "Cross Site Request Forgery": [],
-        "Potentially dangerous file": [],
-        "Command execution": [],
-        "Path Traversal": [],
-        "Fingerprint web application framework": [],
-        "Fingerprint web server": [],
-        "Htaccess Bypass": [],
-        "HTTP Secure Headers": [],
-        "HttpOnly Flag cookie": [],
-        "Log4Shell": [],
-        "Open Redirect": [],
-        "Reflected Cross Site Scripting": [],
-        "Secure Flag cookie": [],
-        "SQL Injection": [],
-        "TLS/SSL misconfigurations": [],
-        "Server Side Request Forgery": [],
-        "Stored Cross Site Scripting": [],
-        "Subdomain takeover": [],
-        "Blind SQL Injection": [],
-        "XML External Entity": []
-    },
-    "anomalies": {
-        "Internal Server Error": [],
-        "Resource consumption": []
-    },
-    "additionals": {
-        "Fingerprint web technology": [],
-        "HTTP Methods": []
+        ]
     },
     "infos": {
         "target": "http://brute_login_form/",
-        "version": "Wapiti 3.1.7",
-        "scope": "folder",
-        "auth": null,
-        "crawled_pages_nbr": 3,
         "crawled_pages": [
             {
                 "request": {
@@ -97,50 +23,38 @@
                     "method": "GET",
                     "headers": [
                         [
-                            "host",
-                            "brute_login_form"
-                        ],
-                        [
-                            "connection",
-                            "keep-alive"
-                        ],
-                        [
-                            "user-agent",
-                            "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"
-                        ],
-                        [
-                            "accept-language",
-                            "en-US"
+                            "accept",
+                            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
                         ],
                         [
                             "accept-encoding",
                             "gzip, deflate, br"
                         ],
                         [
-                            "accept",
-                            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+                            "accept-language",
+                            "en-US"
+                        ],
+                        [
+                            "connection",
+                            "keep-alive"
+                        ],
+                        [
+                            "host",
+                            "brute_login_form"
+                        ],
+                        [
+                            "user-agent",
+                            "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"
                         ]
-                    ],
-                    "referer": "",
-                    "enctype": "",
-                    "encoding": "UTF-8",
-                    "depth": 0
+                    ]
                 },
                 "response": {
                     "status_code": 200,
                     "body": "\n<!DOCTYPE html>\n\n<html>\n\n<head>\n\n\t<meta charset=\"UTF-8\">\n\n\t<title>Bruteforce Login form</title>\n\n</head>\n\n<body>\n\n\n\n\t<form method=\"post\" action=\"/index.php\">\n\n    <div>\n\n        <label for=\"username\">Username:</label>\n\n        <input type=\"text\" id=\"username\" name=\"username\">\n\n    </div>\n\n    <div>\n\n        <label for=\"password\">Password:</label>\n\n        <input type=\"password\" id=\"password\" name=\"password\">\n\n    </div>\n\n    <div>\n\n        <button type=\"submit\">Log in</button>\n\n    </div>\n\n</form>\n\n\n\n\n\n</body>\n\n</html>",
                     "headers": [
                         [
-                            "server",
-                            "Apache/2.4.56 (Debian)"
-                        ],
-                        [
-                            "x-powered-by",
-                            "PHP/8.1.18"
-                        ],
-                        [
-                            "vary",
-                            "Accept-Encoding"
+                            "connection",
+                            "Keep-Alive"
                         ],
                         [
                             "content-encoding",
@@ -151,16 +65,86 @@
                             "263"
                         ],
                         [
-                            "keep-alive",
-                            "timeout=5, max=100"
+                            "content-type",
+                            "text/html; charset=UTF-8"
                         ],
+                        [
+                            "server",
+                            "Apache/2.4.56 (Debian)"
+                        ],
+                        [
+                            "vary",
+                            "Accept-Encoding"
+                        ],
+                        [
+                            "x-powered-by",
+                            "PHP/8.1.18"
+                        ]
+                    ]
+                }
+            },
+            {
+                "request": {
+                    "url": "http://brute_login_form/index.php",
+                    "method": "GET",
+                    "headers": [
+                        [
+                            "accept",
+                            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+                        ],
+                        [
+                            "accept-encoding",
+                            "gzip, deflate, br"
+                        ],
+                        [
+                            "accept-language",
+                            "en-US"
+                        ],
+                        [
+                            "connection",
+                            "keep-alive"
+                        ],
+                        [
+                            "host",
+                            "brute_login_form"
+                        ],
+                        [
+                            "user-agent",
+                            "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"
+                        ]
+                    ]
+                },
+                "response": {
+                    "status_code": 200,
+                    "body": "\n<!DOCTYPE html>\n\n<html>\n\n<head>\n\n\t<meta charset=\"UTF-8\">\n\n\t<title>Bruteforce Login form</title>\n\n</head>\n\n<body>\n\n\n\n\t<form method=\"post\" action=\"/index.php\">\n\n    <div>\n\n        <label for=\"username\">Username:</label>\n\n        <input type=\"text\" id=\"username\" name=\"username\">\n\n    </div>\n\n    <div>\n\n        <label for=\"password\">Password:</label>\n\n        <input type=\"password\" id=\"password\" name=\"password\">\n\n    </div>\n\n    <div>\n\n        <button type=\"submit\">Log in</button>\n\n    </div>\n\n</form>\n\n\n\n\n\n</body>\n\n</html>",
+                    "headers": [
                         [
                             "connection",
                             "Keep-Alive"
                         ],
                         [
+                            "content-encoding",
+                            "gzip"
+                        ],
+                        [
+                            "content-length",
+                            "263"
+                        ],
+                        [
                             "content-type",
                             "text/html; charset=UTF-8"
+                        ],
+                        [
+                            "server",
+                            "Apache/2.4.56 (Debian)"
+                        ],
+                        [
+                            "vary",
+                            "Accept-Encoding"
+                        ],
+                        [
+                            "x-powered-by",
+                            "PHP/8.1.18"
                         ]
                     ]
                 }
@@ -171,157 +155,74 @@
                     "method": "POST",
                     "headers": [
                         [
-                            "host",
-                            "brute_login_form"
-                        ],
-                        [
-                            "connection",
-                            "keep-alive"
-                        ],
-                        [
-                            "user-agent",
-                            "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"
-                        ],
-                        [
-                            "accept-language",
-                            "en-US"
+                            "accept",
+                            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
                         ],
                         [
                             "accept-encoding",
                             "gzip, deflate, br"
                         ],
                         [
-                            "accept",
-                            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+                            "accept-language",
+                            "en-US"
+                        ],
+                        [
+                            "connection",
+                            "keep-alive"
+                        ],
+                        [
+                            "content-length",
+                            "32"
                         ],
                         [
                             "content-type",
                             "application/x-www-form-urlencoded"
                         ],
                         [
+                            "host",
+                            "brute_login_form"
+                        ],
+                        [
                             "referer",
                             "http://brute_login_form/"
                         ],
                         [
-                            "content-length",
-                            "32"
+                            "user-agent",
+                            "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"
                         ]
-                    ],
-                    "referer": "http://brute_login_form/",
-                    "enctype": "application/x-www-form-urlencoded",
-                    "encoding": "utf-8",
-                    "depth": 1
+                    ]
                 },
                 "response": {
                     "status_code": 401,
                     "body": "Invalid username or password.",
                     "headers": [
                         [
-                            "server",
-                            "Apache/2.4.56 (Debian)"
-                        ],
-                        [
-                            "x-powered-by",
-                            "PHP/8.1.18"
-                        ],
-                        [
-                            "www-authenticate",
-                            "Basic realm=\"Restricted Area\""
+                            "connection",
+                            "Keep-Alive"
                         ],
                         [
                             "content-length",
                             "29"
                         ],
                         [
-                            "keep-alive",
-                            "timeout=5, max=99"
-                        ],
-                        [
-                            "connection",
-                            "Keep-Alive"
-                        ],
-                        [
                             "content-type",
                             "text/html; charset=UTF-8"
-                        ]
-                    ]
-                }
-            },
-            {
-                "request": {
-                    "url": "http://brute_login_form/index.php",
-                    "method": "GET",
-                    "headers": [
-                        [
-                            "host",
-                            "brute_login_form"
                         ],
-                        [
-                            "connection",
-                            "keep-alive"
-                        ],
-                        [
-                            "user-agent",
-                            "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"
-                        ],
-                        [
-                            "accept-language",
-                            "en-US"
-                        ],
-                        [
-                            "accept-encoding",
-                            "gzip, deflate, br"
-                        ],
-                        [
-                            "accept",
-                            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
-                        ]
-                    ],
-                    "referer": "",
-                    "enctype": "",
-                    "encoding": "UTF-8",
-                    "depth": 1
-                },
-                "response": {
-                    "status_code": 200,
-                    "body": "\n<!DOCTYPE html>\n\n<html>\n\n<head>\n\n\t<meta charset=\"UTF-8\">\n\n\t<title>Bruteforce Login form</title>\n\n</head>\n\n<body>\n\n\n\n\t<form method=\"post\" action=\"/index.php\">\n\n    <div>\n\n        <label for=\"username\">Username:</label>\n\n        <input type=\"text\" id=\"username\" name=\"username\">\n\n    </div>\n\n    <div>\n\n        <label for=\"password\">Password:</label>\n\n        <input type=\"password\" id=\"password\" name=\"password\">\n\n    </div>\n\n    <div>\n\n        <button type=\"submit\">Log in</button>\n\n    </div>\n\n</form>\n\n\n\n\n\n</body>\n\n</html>",
-                    "headers": [
                         [
                             "server",
                             "Apache/2.4.56 (Debian)"
                         ],
                         [
+                            "www-authenticate",
+                            "Basic realm=\"Restricted Area\""
+                        ],
+                        [
                             "x-powered-by",
                             "PHP/8.1.18"
-                        ],
-                        [
-                            "vary",
-                            "Accept-Encoding"
-                        ],
-                        [
-                            "content-encoding",
-                            "gzip"
-                        ],
-                        [
-                            "content-length",
-                            "263"
-                        ],
-                        [
-                            "keep-alive",
-                            "timeout=5, max=100"
-                        ],
-                        [
-                            "connection",
-                            "Keep-Alive"
-                        ],
-                        [
-                            "content-type",
-                            "text/html; charset=UTF-8"
                         ]
                     ]
                 }
             }
-        ],
-        "detailed_report": true
+        ]
     }
 }
