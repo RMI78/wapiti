@@ -70,6 +70,12 @@ services:
     volumes:
       - ./test_mod_file/php/src:/var/www/html/
 
+  # Apache container for the csrf module
+  csrf:
+    <<: [ *default_php_setup, *healthcheck_web ]
+    volumes:
+      - ./test_mod_csrf/php/src:/var/www/html/
+
   # Wordpress container 
   wordpress:
     build:
@@ -114,6 +120,8 @@ services:
       http_headers:
         condition: service_healthy
       file:
+        condition: service_healthy
+      csrf:
         condition: service_healthy
       wordpress:
         condition: service_healthy
