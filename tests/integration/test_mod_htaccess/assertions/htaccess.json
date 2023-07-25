@@ -1,95 +1,21 @@
 {
     "vulnerabilities": {
-        "Backup file": [],
-        "Weak credentials": [],
-        "CRLF Injection": [],
-        "Content Security Policy Configuration": [],
-        "Cross Site Request Forgery": [],
-        "Potentially dangerous file": [],
-        "Command execution": [],
-        "Path Traversal": [],
-        "Fingerprint web application framework": [],
-        "Fingerprint web server": [],
         "Htaccess Bypass": [
             {
                 "method": "ABC",
                 "path": "/admin/private.php",
                 "info": "http://htaccess/admin/private.php bypassable weak restriction",
-                "level": 2,
                 "parameter": "",
-                "referer": "",
                 "module": "htaccess",
                 "http_request": "ABC /admin/private.php HTTP/1.1\nhost: htaccess\nconnection: keep-alive\nuser-agent: Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0\naccept-language: en-US\naccept-encoding: gzip, deflate, br\naccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-                "curl_command": "curl \"http://htaccess/admin/private.php\"",
                 "wstg": [
                     "WSTG-CONF-06"
-                ],
-                "detail": {
-                    "response": {
-                        "status_code": 200,
-                        "body": "<!DOCTYPE html>\n<html>\n    <head>\n        <meta charset=\"UTF-8\">\n        <title>Htaccess test</title>\n    </head>\n    <body>\n        <p>what ?</p>\n    </body>\n</html>\n",
-                        "headers": [
-                            [
-                                "server",
-                                "Apache/2.4.56 (Debian)"
-                            ],
-                            [
-                                "x-powered-by",
-                                "PHP/8.1.18"
-                            ],
-                            [
-                                "vary",
-                                "Accept-Encoding"
-                            ],
-                            [
-                                "content-length",
-                                "126"
-                            ],
-                            [
-                                "keep-alive",
-                                "timeout=5, max=100"
-                            ],
-                            [
-                                "connection",
-                                "Keep-Alive"
-                            ],
-                            [
-                                "content-type",
-                                "text/html; charset=UTF-8"
-                            ]
-                        ]
-                    }
-                }
+                ]
             }
-        ],
-        "HTTP Secure Headers": [],
-        "HttpOnly Flag cookie": [],
-        "Log4Shell": [],
-        "Open Redirect": [],
-        "Reflected Cross Site Scripting": [],
-        "Secure Flag cookie": [],
-        "SQL Injection": [],
-        "TLS/SSL misconfigurations": [],
-        "Server Side Request Forgery": [],
-        "Stored Cross Site Scripting": [],
-        "Subdomain takeover": [],
-        "Blind SQL Injection": [],
-        "XML External Entity": []
-    },
-    "anomalies": {
-        "Internal Server Error": [],
-        "Resource consumption": []
-    },
-    "additionals": {
-        "Fingerprint web technology": [],
-        "HTTP Methods": []
+        ]
     },
     "infos": {
         "target": "http://htaccess/",
-        "version": "Wapiti 3.1.7",
-        "scope": "folder",
-        "auth": null,
-        "crawled_pages_nbr": 2,
         "crawled_pages": [
             {
                 "request": {
@@ -97,50 +23,38 @@
                     "method": "GET",
                     "headers": [
                         [
-                            "host",
-                            "htaccess"
-                        ],
-                        [
-                            "connection",
-                            "keep-alive"
-                        ],
-                        [
-                            "user-agent",
-                            "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"
-                        ],
-                        [
-                            "accept-language",
-                            "en-US"
+                            "accept",
+                            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
                         ],
                         [
                             "accept-encoding",
                             "gzip, deflate, br"
                         ],
                         [
-                            "accept",
-                            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+                            "accept-language",
+                            "en-US"
+                        ],
+                        [
+                            "connection",
+                            "keep-alive"
+                        ],
+                        [
+                            "host",
+                            "htaccess"
+                        ],
+                        [
+                            "user-agent",
+                            "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"
                         ]
-                    ],
-                    "referer": "",
-                    "enctype": "",
-                    "encoding": "UTF-8",
-                    "depth": 0
+                    ]
                 },
                 "response": {
                     "status_code": 200,
                     "body": "<!DOCTYPE html>\n<html>\n    <head>\n        <meta charset=\"UTF-8\">\n        <title>Htaccess test</title>\n    </head>\n    <body>\n        <p>Hey, that's a cool page you can GET</p>\n        <p>I bet you can't access <a href=\"./admin/private.php\">this page.</a></p>        \n    </body>\n</html>\n\n",
                     "headers": [
                         [
-                            "server",
-                            "Apache/2.4.56 (Debian)"
-                        ],
-                        [
-                            "x-powered-by",
-                            "PHP/8.1.18"
-                        ],
-                        [
-                            "vary",
-                            "Accept-Encoding"
+                            "connection",
+                            "Keep-Alive"
                         ],
                         [
                             "content-encoding",
@@ -151,16 +65,20 @@
                             "197"
                         ],
                         [
-                            "keep-alive",
-                            "timeout=5, max=100"
-                        ],
-                        [
-                            "connection",
-                            "Keep-Alive"
-                        ],
-                        [
                             "content-type",
                             "text/html; charset=UTF-8"
+                        ],
+                        [
+                            "server",
+                            "Apache/2.4.56 (Debian)"
+                        ],
+                        [
+                            "vary",
+                            "Accept-Encoding"
+                        ],
+                        [
+                            "x-powered-by",
+                            "PHP/8.1.18"
                         ]
                     ]
                 }
@@ -171,63 +89,54 @@
                     "method": "GET",
                     "headers": [
                         [
-                            "host",
-                            "htaccess"
-                        ],
-                        [
-                            "connection",
-                            "keep-alive"
-                        ],
-                        [
-                            "user-agent",
-                            "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"
-                        ],
-                        [
-                            "accept-language",
-                            "en-US"
+                            "accept",
+                            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
                         ],
                         [
                             "accept-encoding",
                             "gzip, deflate, br"
                         ],
                         [
-                            "accept",
-                            "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+                            "accept-language",
+                            "en-US"
+                        ],
+                        [
+                            "connection",
+                            "keep-alive"
+                        ],
+                        [
+                            "host",
+                            "htaccess"
+                        ],
+                        [
+                            "user-agent",
+                            "Mozilla/5.0 (Windows NT 6.1; rv:45.0) Gecko/20100101 Firefox/45.0"
                         ]
-                    ],
-                    "referer": "",
-                    "enctype": "",
-                    "encoding": "UTF-8",
-                    "depth": 1
+                    ]
                 },
                 "response": {
                     "status_code": 403,
                     "body": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>403 Forbidden</title>\n</head><body>\n<h1>Forbidden</h1>\n<p>You don't have permission to access this resource.</p>\n<hr>\n<address>Apache/2.4.56 (Debian) Server at htaccess Port 80</address>\n</body></html>\n",
                     "headers": [
                         [
-                            "server",
-                            "Apache/2.4.56 (Debian)"
+                            "connection",
+                            "Keep-Alive"
                         ],
                         [
                             "content-length",
                             "273"
                         ],
                         [
-                            "keep-alive",
-                            "timeout=5, max=99"
-                        ],
-                        [
-                            "connection",
-                            "Keep-Alive"
-                        ],
-                        [
                             "content-type",
                             "text/html; charset=iso-8859-1"
+                        ],
+                        [
+                            "server",
+                            "Apache/2.4.56 (Debian)"
                         ]
                     ]
                 }
             }
-        ],
-        "detailed_report": true
+        ]
     }
 }
