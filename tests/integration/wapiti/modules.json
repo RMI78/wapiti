@@ -34,5 +34,17 @@
                 "erase_global_supplementary": false
             }
         ]
+    },
+    "test_mod_backup": {
+        "modules": "backup",
+        "supplementary_argument": "",
+        "report_filter_tree": {},
+        "targets": [
+            {
+                "name": "http://backup",
+                "supplementary_argument": "",
+                "erase_global_supplementary": false
+            }
+        ]
     }
 }

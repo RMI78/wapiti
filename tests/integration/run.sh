@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # List of the currently working tests
-TESTS="test_mod_wp_enum "
+TESTS="test_mod_wp_enum \
+test_mod_backup "
 
 # Normalize trailing space for shell substitution
 if [[ ! -z "$TESTS" ]]; then
