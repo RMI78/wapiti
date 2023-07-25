@@ -51,6 +51,12 @@ services:
     volumes:
       - ./test_mod_backup/html/:/var/www/html/
 
+  # Apache container for the brute_login_form module
+  brute_login_form:
+    <<: [ *default_php_setup, *healthcheck_web ]
+    volumes:
+      - ./test_mod_brute_login_form/php/src:/var/www/html/
+
   # Apache container for the http_headers module
   http_headers:
     build:
@@ -128,6 +134,8 @@ services:
     command: "${TESTS}"
     depends_on:
       backup:
+        condition: service_healthy
+      brute_login_form:
         condition: service_healthy
       http_headers:
         condition: service_healthy
