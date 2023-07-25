@@ -5,7 +5,8 @@ TESTS="test_mod_wp_enum \
 test_mod_backup \
 test_mod_http_headers \
 test_mod_file \
-test_mod_csrf "
+test_mod_csrf \
+test_mod_csp "
 
 # Normalize trailing space for shell substitution
 if [[ ! -z "$TESTS" ]]; then
